@@ -3,6 +3,10 @@ import pywikibot
 from pywikibot import pagegenerators
 import json
 import mwparserfromhell as mwp
+import hashlib
+import urllib
+from urllib.request import urlretrieve
+
 
 def _clean(wiki_text):
     wikicode = mwp.parse(wiki_text)
@@ -18,59 +22,74 @@ def query_size(filename):
     
     return len(pages)
 
-def get_requests_path(request, out_dir):
-    requests_base = Path(out_dir)
-    requests_path = requests_base / request
-    
-    is_exist = requests_path.exists()
-    if not is_exist:
+def get_path(out_dir):
+    requests_path = Path(out_dir)
+    if not requests_path.exists():
         requests_path.mkdir(parents=True)
       
-    return (requests_path, is_exist)
+    return requests_path
 
-def query(filename, out_dir='../requests', force_rewrite=True, debug_info=True, limit=None):
-    requests_path, existed = get_requests_path(filename, out_dir)
+def get_url(img_name, size=600):
+    url_prefix = "https://upload.wikimedia.org/wikipedia/commons/thumb/"
+    md5 = hashlib.md5(img_name.encode('utf-8')).hexdigest()
+    sep = "/"
     
-    if existed:
-        if not force_rewrite:
-            if debug_info: print('Request has already been downloaded')
-            return requests_path
-        else:
-            if debug_info: print('Cleaning old data')
-            for x in requests_path.iterdir():
-                x.unlink()
-    
+    img_name = urllib.parse.quote(img_name)
+    url = url_prefix + sep.join((md5[0], md5[:2], img_name)) + sep + str(size) + "px-" + img_name
+    if url[-4:] != ".jpg" and url[-4:] != "jpeg":
+        url += ".jpg"
+        
+    return url
+
+def query(filename, out_dir='../data/', debug_info=True, limit=None):   
     print('Downloading...')
     site = pywikibot.Site()    
     pages = list(pagegenerators.TextfilePageGenerator(filename=filename, site=site))
     
+    prev_percent = -1
+    unavailable_count = 0
+    total_count = 0
     for i, p in enumerate(pages):
-        page_json = json.dumps({
-            "title": p.title(),
-            "url": p.full_url(),
-            "text": _clean(p.text),
-        })
-        
-        _dump(requests_path / (str(p.pageid) + '.json'), page_json)
+        if i >= limit: break
+            
+        page_dir = get_path(out_dir + p.title(as_filename=True))
+        text_path = page_dir / 'text.json'
+        if not text_path.exists():
+            page_json = json.dumps({
+                "title": p.title(),
+                "id": p.pageid,
+                "url": p.full_url(),
+                "text": _clean(p.text),
+            })
+            
+            _dump(text_path, page_json)
         
         # TODO: fix the problem with pageid == 0
         if p.pageid == 0:
             print("ERROR: Cannot fetch the page " + p.title())
             continue
             
-        if debug_info and (i+1) % 50 == 0: print('Dumped {} pages'.format(i+1))
-        if i >= limit: break
+        if debug_info:
+            count = min(limit, len(pages)) if limit else len(pages)
+            percent = int(i / count * 100)
+            if prev_percent != percent:
+                prev_percent = percent
+                print('{}% completed'.format(percent))
             
         # downloading page images
         img_links = list(p.imagelinks())
-        path = Path("../data/img/" + str(p.pageid))
-        if not path.exists():
-            path.mkdir(parents=True)
-            
+        img_dir = get_path(page_dir/"img")
         for img in img_links:
-            img_path = path/img.title(as_filename=True, with_ns=False)
+            img_name = img.title(as_filename=True, with_ns=False)
+            img_path = img_dir / (img_name + ".jpg")
             if img_path.exists(): continue
-            if debug_info: print('Downloading {} | {}'.format(img_path, p.title()))
-            img.download(filename=img_path, chunk_size=8*1024)
             
-    return requests_path
+            total_count += 1
+            try:
+                urlretrieve(get_url(img_name), img_path)
+            except:
+                unavailable_count += 1
+                img.download(filename=str(img_path) + ".ORIGINAL" , chunk_size=8*1024)
+            
+            
+    print('Downloaded {} images, where {} of them unavailable from commons'.format(total_count, unavailable_count))
