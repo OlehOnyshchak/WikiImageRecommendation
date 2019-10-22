@@ -44,9 +44,7 @@ def query(filename, out_dir='../requests', force_rewrite=True, debug_info=True, 
     site = pywikibot.Site()    
     pages = list(pagegenerators.TextfilePageGenerator(filename=filename, site=site))
     
-    count = 0
-    for p in pages:
-        count += 1
+    for i, p in enumerate(pages):
         page_json = json.dumps({
             "title": p.title(),
             "url": p.full_url(),
@@ -54,9 +52,25 @@ def query(filename, out_dir='../requests', force_rewrite=True, debug_info=True, 
         })
         
         _dump(requests_path / (str(p.pageid) + '.json'), page_json)
+        
         # TODO: fix the problem with pageid == 0
-        if p.pageid == 0: print("ERROR: Cannot fetch the page " + p.title())
-        if debug_info and count % 50 == 0: print('Dumped {} pages'.format(count))
-        if count > limit: break
+        if p.pageid == 0:
+            print("ERROR: Cannot fetch the page " + p.title())
+            continue
+            
+        if debug_info and (i+1) % 50 == 0: print('Dumped {} pages'.format(i+1))
+        if i >= limit: break
+            
+        # downloading page images
+        img_links = list(p.imagelinks())
+        path = Path("../data/img/" + str(p.pageid))
+        if not path.exists():
+            path.mkdir(parents=True)
+            
+        for img in img_links:
+            img_path = path/img.title(as_filename=True, with_ns=False)
+            if img_path.exists(): continue
+            if debug_info: print('Downloading {} | {}'.format(img_path, p.title()))
+            img.download(filename=img_path, chunk_size=8*1024)
             
     return requests_path
