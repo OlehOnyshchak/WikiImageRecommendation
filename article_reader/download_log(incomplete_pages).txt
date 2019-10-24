@@ -1,0 +1,411 @@
+Downloading...
+0% completed
+ERROR: Cannot fetch all images from https://en.wikipedia.org/wiki/Mary_Shelley
+ERROR: Cannot fetch all images from https://en.wikipedia.org/wiki/San_Francisco
+1% completed
+ERROR: Cannot fetch all images from https://en.wikipedia.org/wiki/Darjeeling
+ERROR: Cannot fetch all images from https://en.wikipedia.org/wiki/Nauru
+2% completed
+ERROR: Cannot fetch all images from https://en.wikipedia.org/wiki/Belarus
+ERROR: Cannot fetch all images from https://en.wikipedia.org/wiki/Battleship
+ERROR: Cannot fetch all images from https://en.wikipedia.org/wiki/Chess
+ERROR: Cannot fetch all images from https://en.wikipedia.org/wiki/Order_of_St_Patrick
+ERROR: Cannot fetch all images from https://en.wikipedia.org/wiki/Peter_Jennings
+3% completed
+ERROR: Cannot fetch all images from https://en.wikipedia.org/wiki/Order_of_the_Thistle
+ERROR: Cannot fetch all images from https://en.wikipedia.org/wiki/Order_of_the_Garter
+ERROR: Cannot fetch all images from https://en.wikipedia.org/wiki/Edgar_Allan_Poe
+4% completed
+ERROR: Cannot fetch all images from https://en.wikipedia.org/wiki/FIFA_World_Cup
+ERROR: Cannot fetch all images from https://en.wikipedia.org/wiki/Bengali_language_movement
+ERROR: Cannot fetch all images from https://en.wikipedia.org/wiki/Flag_of_Armenia
+5% completed
+ERROR: Cannot fetch all images from https://en.wikipedia.org/wiki/Flag_of_Belarus
+ERROR: Cannot fetch all images from https://en.wikipedia.org/wiki/Battle_of_Tippecanoe
+ERROR: Cannot fetch all images from https://en.wikipedia.org/wiki/2005_Atlantic_hurricane_season
+ERROR: Cannot fetch all images from https://en.wikipedia.org/wiki/Hippocrates
+6% completed
+ERROR: Cannot fetch all images from https://en.wikipedia.org/wiki/Washington%2C_D.C.
+ERROR: Cannot fetch all images from https://en.wikipedia.org/wiki/Nancy_Cartwright
+ERROR: Cannot fetch all images from https://en.wikipedia.org/wiki/Erie%2C_Pennsylvania
+ERROR: Cannot fetch all images from https://en.wikipedia.org/wiki/John_Lennon
+7% completed
+ERROR: Cannot fetch all images from https://en.wikipedia.org/wiki/Flag_of_Portugal
+ERROR: Cannot fetch all images from https://en.wikipedia.org/wiki/National_emblem_of_Belarus
+ERROR: Cannot fetch all images from https://en.wikipedia.org/wiki/Joking_Apart
+ERROR: Cannot fetch all images from https://en.wikipedia.org/wiki/2006_Atlantic_hurricane_season
+ERROR: Cannot fetch all images from https://en.wikipedia.org/wiki/Nathu_La
+8% completed
+ERROR: Cannot fetch all images from https://en.wikipedia.org/wiki/Operation_Cobra
+ERROR: Cannot fetch all images from https://en.wikipedia.org/wiki/Tulsa%2C_Oklahoma
+ERROR: Cannot fetch all images from https://en.wikipedia.org/wiki/Manitoba
+9% completed
+ERROR: Cannot fetch all images from https://en.wikipedia.org/wiki/Mary_Wollstonecraft
+10% completed
+ERROR: Cannot fetch all images from https://en.wikipedia.org/wiki/Kreutz_sungrazer
+ERROR: Cannot fetch all images from https://en.wikipedia.org/wiki/Manchester_City_F.C.
+11% completed
+ERROR: Cannot fetch all images from https://en.wikipedia.org/wiki/Jay_Pritzker_Pavilion
+ERROR: Cannot fetch all images from https://en.wikipedia.org/wiki/Bids_for_the_2012_Summer_Olympics
+12% completed
+13% completed
+14% completed
+ERROR: Cannot fetch all images from https://en.wikipedia.org/wiki/2006_Pacific_hurricane_season
+15% completed
+ERROR: Cannot fetch all images from https://en.wikipedia.org/wiki/West_Wycombe_Park
+16% completed
+ERROR: Cannot fetch all images from https://en.wikipedia.org/wiki/Falaise_Pocket
+ERROR: Cannot fetch all images from https://en.wikipedia.org/wiki/Operation_Tractable
+ERROR: Cannot fetch all images from https://en.wikipedia.org/wiki/Operation_Charnwood
+17% completed
+ERROR: Cannot fetch all images from https://en.wikipedia.org/wiki/North_by_North_Quahog
+ERROR: Cannot fetch all images from https://en.wikipedia.org/wiki/2005_United_States_Grand_Prix
+ERROR: Cannot fetch all images from https://en.wikipedia.org/wiki/Wales_national_rugby_union_team
+ERROR: Cannot fetch all images from https://en.wikipedia.org/wiki/Ed_Stelmach
+ERROR: Cannot fetch all images from https://en.wikipedia.org/wiki/France_national_rugby_union_team
+18% completed
+ERROR: Cannot fetch all images from https://en.wikipedia.org/wiki/Cleveland_Street_scandal
+ERROR: Cannot fetch all images from https://en.wikipedia.org/wiki/Treaty_of_Devol
+ERROR: Cannot fetch all images from https://en.wikipedia.org/wiki/Battle_of_Dyrrhachium_%281081%29
+19% completed
+ERROR: Cannot fetch all images from https://en.wikipedia.org/wiki/Flight_feather
+ERROR: Cannot fetch all images from https://en.wikipedia.org/wiki/Chaco_Culture_National_Historical_Park
+ERROR: Cannot fetch all images from https://en.wikipedia.org/wiki/Delichon
+20% completed
+ERROR: Cannot fetch all images from https://en.wikipedia.org/wiki/Bob_Windle
+ERROR: Cannot fetch all images from https://en.wikipedia.org/wiki/Kevin_O%27Halloran
+ERROR: Cannot fetch all images from https://en.wikipedia.org/wiki/Ian_O%27Brien
+21% completed
+ERROR: Cannot fetch all images from https://en.wikipedia.org/wiki/Me_and_Juliet
+ERROR: Cannot fetch all images from https://en.wikipedia.org/wiki/Stanley_Green
+22% completed
+ERROR: Cannot fetch all images from https://en.wikipedia.org/wiki/Jena_Six
+ERROR: Cannot fetch all images from https://en.wikipedia.org/wiki/Hurricane_Dean
+ERROR: Cannot fetch all images from https://en.wikipedia.org/wiki/Hurricane_Vince
+ERROR: Cannot fetch all images from https://en.wikipedia.org/wiki/Meteorological_history_of_Hurricane_Dean
+23% completed
+ERROR: Cannot fetch all images from https://en.wikipedia.org/wiki/Minneapolis
+24% completed
+ERROR: Cannot fetch all images from https://en.wikipedia.org/wiki/2008_Monaco_Grand_Prix
+ERROR: Cannot fetch all images from https://en.wikipedia.org/wiki/2008_Hungarian_Grand_Prix
+ERROR: Cannot fetch all images from https://en.wikipedia.org/wiki/2008_Japanese_Grand_Prix
+ERROR: Cannot fetch all images from https://en.wikipedia.org/wiki/2008_Brazilian_Grand_Prix
+ERROR: Cannot fetch all images from https://en.wikipedia.org/wiki/Conatus
+25% completed
+ERROR: Cannot fetch all images from https://en.wikipedia.org/wiki/Operation_Perch
+ERROR: Cannot fetch all images from https://en.wikipedia.org/wiki/Mozambican_War_of_Independence
+26% completed
+27% completed
+ERROR: Cannot fetch all images from https://en.wikipedia.org/wiki/Victoria_Cross
+ERROR: Cannot fetch all images from https://en.wikipedia.org/wiki/BP_Pedestrian_Bridge
+28% completed
+ERROR: Cannot fetch all images from https://en.wikipedia.org/wiki/Privy_Council_of_the_United_Kingdom
+29% completed
+ERROR: Cannot fetch all images from https://en.wikipedia.org/wiki/Hanford_Site
+ERROR: Cannot fetch all images from https://en.wikipedia.org/wiki/1956_Winter_Olympics
+Sleeping for 5.0 seconds, 2019-10-24 18:47:42
+ERROR: Cannot fetch all images from https://en.wikipedia.org/wiki/William_Wilberforce
+30% completed
+ERROR: Cannot fetch all images from https://en.wikipedia.org/wiki/Malagasy_cuisine
+ERROR: Cannot fetch all images from https://en.wikipedia.org/wiki/Venus
+31% completed
+ERROR: Cannot fetch all images from https://en.wikipedia.org/wiki/Providence%2C_Rhode_Island
+ERROR: Cannot fetch all images from https://en.wikipedia.org/wiki/Knut_%28polar_bear%29
+32% completed
+ERROR: Cannot fetch all images from https://en.wikipedia.org/wiki/Ronnie_Lee_Gardner
+ERROR: Cannot fetch all images from https://en.wikipedia.org/wiki/Hurricane_Rick_%282009%29
+ERROR: Cannot fetch all images from https://en.wikipedia.org/wiki/Kent%2C_Ohio
+ERROR: Cannot fetch all images from https://en.wikipedia.org/wiki/Neville_Chamberlain
+ERROR: Cannot fetch all images from https://en.wikipedia.org/wiki/Influenza
+ERROR: Cannot fetch all images from https://en.wikipedia.org/wiki/Lion
+33% completed
+ERROR: Cannot fetch all images from https://en.wikipedia.org/wiki/South_Park_%28season_13%29
+ERROR: Cannot fetch all images from https://en.wikipedia.org/wiki/Rugby_World_Cup
+ERROR: Cannot fetch all images from https://en.wikipedia.org/wiki/Order_of_the_Bath
+ERROR: Cannot fetch all images from https://en.wikipedia.org/wiki/Jim_Thorpe
+ERROR: Cannot fetch all images from https://en.wikipedia.org/wiki/Wesley_Clark
+ERROR: Cannot fetch all images from https://en.wikipedia.org/wiki/Brad_Pitt
+34% completed
+ERROR: Cannot fetch all images from https://en.wikipedia.org/wiki/Guy_Fawkes_Night
+ERROR: Cannot fetch all images from https://en.wikipedia.org/wiki/Operation_Epsom
+35% completed
+ERROR: Cannot fetch all images from https://en.wikipedia.org/wiki/Midshipman
+36% completed
+ERROR: Cannot fetch all images from https://en.wikipedia.org/wiki/Sir_Gawain_and_the_Green_Knight
+ERROR: Cannot fetch all images from https://en.wikipedia.org/wiki/Richard_Nixon
+37% completed
+ERROR: Cannot fetch all images from https://en.wikipedia.org/wiki/Virginia
+ERROR: Cannot fetch all images from https://en.wikipedia.org/wiki/Uranus
+ERROR: Cannot fetch all images from https://en.wikipedia.org/wiki/Ernest_Emerson
+ERROR: Cannot fetch all images from https://en.wikipedia.org/wiki/European_Commission
+ERROR: Cannot fetch all images from https://en.wikipedia.org/wiki/Antarctica
+ERROR: Cannot fetch all images from https://en.wikipedia.org/wiki/Tropical_Storm_Alberto_%282006%29
+ERROR: Cannot fetch all images from https://en.wikipedia.org/wiki/Climate_of_India
+38% completed
+ERROR: Cannot fetch all images from https://en.wikipedia.org/wiki/Seacology
+ERROR: Cannot fetch all images from https://en.wikipedia.org/wiki/Cell_nucleus
+ERROR: Cannot fetch all images from https://en.wikipedia.org/wiki/Romeo_and_Juliet
+ERROR: Cannot fetch all images from https://en.wikipedia.org/wiki/Atheism
+39% completed
+ERROR: Cannot fetch all images from https://en.wikipedia.org/wiki/Belgrade
+ERROR: Cannot fetch all images from https://en.wikipedia.org/wiki/Charles_Darwin
+ERROR: Cannot fetch all images from https://en.wikipedia.org/wiki/German_battleship_Tirpitz
+40% completed
+ERROR: Cannot fetch all images from https://en.wikipedia.org/wiki/W._E._B._Du_Bois
+ERROR: Cannot fetch all images from https://en.wikipedia.org/wiki/John_McCain
+41% completed
+ERROR: Cannot fetch all images from https://en.wikipedia.org/wiki/Moon
+ERROR: Cannot fetch all images from https://en.wikipedia.org/wiki/Schizophrenia
+42% completed
+ERROR: Cannot fetch all images from https://en.wikipedia.org/wiki/William_Burges
+ERROR: Cannot fetch all images from https://en.wikipedia.org/wiki/Jupiter
+43% completed
+ERROR: Cannot fetch all images from https://en.wikipedia.org/wiki/German_battleship_Bismarck
+44% completed
+ERROR: Cannot fetch all images from https://en.wikipedia.org/wiki/Iraq_War_in_Al_Anbar_Governorate
+ERROR: Cannot fetch all images from https://en.wikipedia.org/wiki/Sun
+ERROR: Cannot fetch all images from https://en.wikipedia.org/wiki/Dodo
+45% completed
+ERROR: Cannot fetch all images from https://en.wikipedia.org/wiki/Solar_System
+ERROR: Cannot fetch all images from https://en.wikipedia.org/wiki/Japan
+ERROR: Cannot fetch all images from https://en.wikipedia.org/wiki/Kolkata
+46% completed
+ERROR: Cannot fetch all images from https://en.wikipedia.org/wiki/Youngstown%2C_Ohio
+ERROR: Cannot fetch all images from https://en.wikipedia.org/wiki/2007_United_States_Air_Force_nuclear_weapons_incident
+47% completed
+ERROR: Cannot fetch all images from https://en.wikipedia.org/wiki/Broad-billed_parrot
+ERROR: Cannot fetch all images from https://en.wikipedia.org/wiki/Tornado
+ERROR: Cannot fetch all images from https://en.wikipedia.org/wiki/Xenu
+48% completed
+ERROR: Cannot fetch all images from https://en.wikipedia.org/wiki/Minnesota
+49% completed
+ERROR: Cannot fetch all images from https://en.wikipedia.org/wiki/Cycling_at_the_2008_Summer_Olympics_%E2%80%93_Men%27s_individual_road_race
+ERROR: Cannot fetch all images from https://en.wikipedia.org/wiki/SMS_Prinzregent_Luitpold
+50% completed
+ERROR: Cannot fetch all images from https://en.wikipedia.org/wiki/Helgoland-class_battleship
+ERROR: Cannot fetch all images from https://en.wikipedia.org/wiki/Kaiser-class_battleship
+ERROR: Cannot fetch all images from https://en.wikipedia.org/wiki/Rudd_Concession
+ERROR: Cannot fetch all images from https://en.wikipedia.org/wiki/Saturn
+ERROR: Cannot fetch all images from https://en.wikipedia.org/wiki/Elizabeth_II
+51% completed
+ERROR: Cannot fetch all images from https://en.wikipedia.org/wiki/Rwanda
+ERROR: Cannot fetch all images from https://en.wikipedia.org/wiki/Enceladus
+ERROR: Cannot fetch all images from https://en.wikipedia.org/wiki/Leningrad_premi%C3%A8re_of_Shostakovich%27s_Symphony_No._7
+52% completed
+ERROR: Cannot fetch all images from https://en.wikipedia.org/wiki/Kellie_Loder
+ERROR: Cannot fetch all images from https://en.wikipedia.org/wiki/Great_North_of_Scotland_Railway
+ERROR: Cannot fetch all images from https://en.wikipedia.org/wiki/Georges_Bizet
+ERROR: Cannot fetch all images from https://en.wikipedia.org/wiki/The_Beatles
+ERROR: Cannot fetch all images from https://en.wikipedia.org/wiki/Autism
+53% completed
+ERROR: Cannot fetch all images from https://en.wikipedia.org/wiki/Mars
+ERROR: Cannot fetch all images from https://en.wikipedia.org/wiki/Jimi_Hendrix
+ERROR: Cannot fetch all images from https://en.wikipedia.org/wiki/The_Simpsons
+54% completed
+ERROR: Cannot fetch all images from https://en.wikipedia.org/wiki/George_III_of_the_United_Kingdom
+ERROR: Cannot fetch all images from https://en.wikipedia.org/wiki/Newton%27s_parakeet
+ERROR: Cannot fetch all images from https://en.wikipedia.org/wiki/First_inauguration_of_Barack_Obama
+55% completed
+ERROR: Cannot fetch all images from https://en.wikipedia.org/wiki/Sesame_Street
+56% completed
+ERROR: Cannot fetch all images from https://en.wikipedia.org/wiki/Hilda_Rix_Nicholas
+57% completed
+ERROR: Cannot fetch all images from https://en.wikipedia.org/wiki/Winnipeg
+ERROR: Cannot fetch all images from https://en.wikipedia.org/wiki/Falkland_Islands
+ERROR: Cannot fetch all images from https://en.wikipedia.org/wiki/Greater_Manchester
+ERROR: Cannot fetch all images from https://en.wikipedia.org/wiki/Ian_Thorpe
+ERROR: Cannot fetch all images from https://en.wikipedia.org/wiki/Istanbul
+ERROR: Cannot fetch all images from https://en.wikipedia.org/wiki/Olympic_Games
+58% completed
+ERROR: Cannot fetch all images from https://en.wikipedia.org/wiki/Hubble_Space_Telescope
+59% completed
+ERROR: Cannot fetch all images from https://en.wikipedia.org/wiki/Battle_of_Villers-Bocage
+ERROR: Cannot fetch all images from https://en.wikipedia.org/wiki/SMS_Emden
+60% completed
+ERROR: Cannot fetch all images from https://en.wikipedia.org/wiki/Bird
+ERROR: Cannot fetch all images from https://en.wikipedia.org/wiki/Hoopoe_starling
+ERROR: Cannot fetch all images from https://en.wikipedia.org/wiki/R%C3%A9union_ibis
+ERROR: Cannot fetch all images from https://en.wikipedia.org/wiki/The_Simpsons_Movie
+ERROR: Cannot fetch all images from https://en.wikipedia.org/wiki/The_Chaser_APEC_pranks
+ERROR: Cannot fetch all images from https://en.wikipedia.org/wiki/FC_Barcelona
+61% completed
+ERROR: Cannot fetch all images from https://en.wikipedia.org/wiki/Rodrigues_starling
+ERROR: Cannot fetch all images from https://en.wikipedia.org/wiki/Tintin_in_the_Congo
+ERROR: Cannot fetch all images from https://en.wikipedia.org/wiki/Oklahoma
+62% completed
+ERROR: Cannot fetch all images from https://en.wikipedia.org/wiki/I_Never_Liked_You
+ERROR: Cannot fetch all images from https://en.wikipedia.org/wiki/City_of_Angels_%28song%29
+ERROR: Cannot fetch all images from https://en.wikipedia.org/wiki/Zimbabwe_women%27s_national_field_hockey_team_at_the_1980_Summer_Olympics
+ERROR: Cannot fetch all images from https://en.wikipedia.org/wiki/Gamma-ray_burst
+63% completed
+ERROR: Cannot fetch all images from https://en.wikipedia.org/wiki/Australia
+ERROR: Cannot fetch all images from https://en.wikipedia.org/wiki/Angelina_Jolie
+64% completed
+ERROR: Cannot fetch all images from https://en.wikipedia.org/wiki/Eta_Carinae
+ERROR: Cannot fetch all images from https://en.wikipedia.org/wiki/Tripura
+65% completed
+ERROR: Cannot fetch all images from https://en.wikipedia.org/wiki/Association_football
+ERROR: Cannot fetch all images from https://en.wikipedia.org/wiki/Derek_Jeter
+ERROR: Cannot fetch all images from https://en.wikipedia.org/wiki/Augustus
+ERROR: Cannot fetch all images from https://en.wikipedia.org/wiki/Haumea
+ERROR: Cannot fetch all images from https://en.wikipedia.org/wiki/Archimedes
+ERROR: Cannot fetch all images from https://en.wikipedia.org/wiki/Liverpool_F.C.
+66% completed
+ERROR: Cannot fetch all images from https://en.wikipedia.org/wiki/Tamil_language
+ERROR: Cannot fetch all images from https://en.wikipedia.org/wiki/Joan_of_Arc
+ERROR: Cannot fetch all images from https://en.wikipedia.org/wiki/England_national_rugby_union_team
+67% completed
+ERROR: Cannot fetch all images from https://en.wikipedia.org/wiki/Benjamin_Disraeli
+ERROR: Cannot fetch all images from https://en.wikipedia.org/wiki/Avery_Coonley_School
+ERROR: Cannot fetch all images from https://en.wikipedia.org/wiki/Richard_Dannatt
+ERROR: Cannot fetch all images from https://en.wikipedia.org/wiki/New_Zealand_national_rugby_union_team
+ERROR: Cannot fetch all images from https://en.wikipedia.org/wiki/Pluto
+68% completed
+ERROR: Cannot fetch all images from https://en.wikipedia.org/wiki/Parkinson%27s_disease
+ERROR: Cannot fetch all images from https://en.wikipedia.org/wiki/Comet_Shoemaker%E2%80%93Levy_9
+ERROR: Cannot fetch all images from https://en.wikipedia.org/wiki/Halley%27s_Comet
+ERROR: Cannot fetch all images from https://en.wikipedia.org/wiki/Comet_Hale%E2%80%93Bopp
+ERROR: Cannot fetch all images from https://en.wikipedia.org/wiki/Comet_Hyakutake
+ERROR: Cannot fetch all images from https://en.wikipedia.org/wiki/Antonin_Scalia
+ERROR: Cannot fetch all images from https://en.wikipedia.org/wiki/Scottish_Parliament
+69% completed
+ERROR: Cannot fetch all images from https://en.wikipedia.org/wiki/Springbok
+70% completed
+ERROR: Cannot fetch all images from https://en.wikipedia.org/wiki/Red_rail
+ERROR: Cannot fetch all images from https://en.wikipedia.org/wiki/Sgt._Pepper%27s_Lonely_Hearts_Club_Band
+ERROR: Cannot fetch all images from https://en.wikipedia.org/wiki/Germany
+ERROR: Cannot fetch all images from https://en.wikipedia.org/wiki/Oganesson
+ERROR: Cannot fetch all images from https://en.wikipedia.org/wiki/Tennessine
+ERROR: Cannot fetch all images from https://en.wikipedia.org/wiki/Freida_Pinto
+ERROR: Cannot fetch all images from https://en.wikipedia.org/wiki/Impala
+71% completed
+ERROR: Cannot fetch all images from https://en.wikipedia.org/wiki/Death_of_Ian_Tomlinson
+ERROR: Cannot fetch all images from https://en.wikipedia.org/wiki/Flag_of_Germany
+ERROR: Cannot fetch all images from https://en.wikipedia.org/wiki/Giraffe
+ERROR: Cannot fetch all images from https://en.wikipedia.org/wiki/Dengue_fever
+ERROR: Cannot fetch all images from https://en.wikipedia.org/wiki/Galaxy
+ERROR: Cannot fetch all images from https://en.wikipedia.org/wiki/Evolution
+72% completed
+ERROR: Cannot fetch all images from https://en.wikipedia.org/wiki/Canada
+ERROR: Cannot fetch all images from https://en.wikipedia.org/wiki/Cameroon
+ERROR: Cannot fetch all images from https://en.wikipedia.org/wiki/Cannon
+73% completed
+ERROR: Cannot fetch all images from https://en.wikipedia.org/wiki/Bluebuck
+ERROR: Cannot fetch all images from https://en.wikipedia.org/wiki/Seattle
+ERROR: Cannot fetch all images from https://en.wikipedia.org/wiki/Rodrigues_solitaire
+74% completed
+ERROR: Cannot fetch all images from https://en.wikipedia.org/wiki/Belgium_national_football_team
+ERROR: Cannot fetch all images from https://en.wikipedia.org/wiki/Jennifer_Lawrence
+ERROR: Cannot fetch all images from https://en.wikipedia.org/wiki/SMS_Schwaben
+ERROR: Cannot fetch all images from https://en.wikipedia.org/wiki/Emma_Watson
+75% completed
+ERROR: Cannot fetch all images from https://en.wikipedia.org/wiki/Nelson_Mandela
+ERROR: Cannot fetch all images from https://en.wikipedia.org/wiki/Periodic_table
+76% completed
+ERROR: Cannot fetch all images from https://en.wikipedia.org/wiki/Courtney_Love
+ERROR: Cannot fetch all images from https://en.wikipedia.org/wiki/John_C._Calhoun
+ERROR: Cannot fetch all images from https://en.wikipedia.org/wiki/Jean_Bellette
+ERROR: Cannot fetch all images from https://en.wikipedia.org/wiki/Malcolm_X
+ERROR: Cannot fetch all images from https://en.wikipedia.org/wiki/Fez_%28video_game%29
+77% completed
+ERROR: Cannot fetch all images from https://en.wikipedia.org/wiki/Resident_Evil_5
+ERROR: Cannot fetch all images from https://en.wikipedia.org/wiki/African_crake
+ERROR: Cannot fetch all images from https://en.wikipedia.org/wiki/Subtropical_Storm_Andrea_%282007%29
+ERROR: Cannot fetch all images from https://en.wikipedia.org/wiki/William_Henry_Bury
+ERROR: Cannot fetch all images from https://en.wikipedia.org/wiki/Michael_Jackson
+ERROR: Cannot fetch all images from https://en.wikipedia.org/wiki/Manchester
+78% completed
+ERROR: Cannot fetch all images from https://en.wikipedia.org/wiki/Sea
+ERROR: Cannot fetch all images from https://en.wikipedia.org/wiki/Rodrigues_parrot
+ERROR: Cannot fetch all images from https://en.wikipedia.org/wiki/Flag_of_Lithuania
+79% completed
+ERROR: Cannot fetch all images from https://en.wikipedia.org/wiki/SMS_Deutschland_%281904%29
+ERROR: Cannot fetch all images from https://en.wikipedia.org/wiki/Steve_Biko
+80% completed
+ERROR: Cannot fetch all images from https://en.wikipedia.org/wiki/Paradises_Lost
+81% completed
+ERROR: Cannot fetch all images from https://en.wikipedia.org/wiki/Rodrigues_rail
+ERROR: Cannot fetch all images from https://en.wikipedia.org/wiki/Alfred_Shout
+ERROR: Cannot fetch all images from https://en.wikipedia.org/wiki/Coldrum_Long_Barrow
+ERROR: Cannot fetch all images from https://en.wikipedia.org/wiki/Hillary_Clinton
+ERROR: Cannot fetch all images from https://en.wikipedia.org/wiki/Patrick_Henry
+82% completed
+ERROR: Cannot fetch all images from https://en.wikipedia.org/wiki/Oort_cloud
+ERROR: Cannot fetch all images from https://en.wikipedia.org/wiki/Dhaka
+ERROR: Cannot fetch all images from https://en.wikipedia.org/wiki/Hawker_Hurricane_in_Yugoslav_service
+ERROR: Cannot fetch all images from https://en.wikipedia.org/wiki/Albert_Speer
+ERROR: Cannot fetch all images from https://en.wikipedia.org/wiki/Rogo%C5%BEarski_IK-3
+83% completed
+ERROR: Cannot fetch all images from https://en.wikipedia.org/wiki/Omaha_Beach
+ERROR: Cannot fetch all images from https://en.wikipedia.org/wiki/SMS_Wittelsbach
+ERROR: Cannot fetch all images from https://en.wikipedia.org/wiki/Barack_Obama
+84% completed
+ERROR: Cannot fetch all images from https://en.wikipedia.org/wiki/George_Harrison
+ERROR: Cannot fetch all images from https://en.wikipedia.org/wiki/Joseph_Priestley
+ERROR: Cannot fetch all images from https://en.wikipedia.org/wiki/Nodar_Kumaritashvili
+ERROR: Cannot fetch all images from https://en.wikipedia.org/wiki/History_of_saffron
+ERROR: Cannot fetch all images from https://en.wikipedia.org/wiki/Mitt_Romney
+ERROR: Cannot fetch all images from https://en.wikipedia.org/wiki/Thaddeus_McCotter_2012_presidential_campaign
+ERROR: Cannot fetch all images from https://en.wikipedia.org/wiki/Oceanic_whitetip_shark
+ERROR: Cannot fetch all images from https://en.wikipedia.org/wiki/Bristol
+85% completed
+86% completed
+ERROR: Cannot fetch all images from https://en.wikipedia.org/wiki/Madagascar
+87% completed
+ERROR: Cannot fetch all images from https://en.wikipedia.org/wiki/1930_FIFA_World_Cup
+ERROR: Cannot fetch all images from https://en.wikipedia.org/wiki/Cleveland
+Sleeping for 5.0 seconds, 2019-10-24 19:31:22
+ERROR: Cannot fetch all images from https://en.wikipedia.org/wiki/SMS_Hessen
+88% completed
+ERROR: Cannot fetch all images from https://en.wikipedia.org/wiki/Hyderabad
+89% completed
+ERROR: Cannot fetch all images from https://en.wikipedia.org/wiki/Ann_Arbor%2C_Michigan
+ERROR: Cannot fetch all images from https://en.wikipedia.org/wiki/4th_Army_%28Kingdom_of_Yugoslavia%29
+ERROR: Cannot fetch all images from https://en.wikipedia.org/wiki/Bulgaria
+90% completed
+ERROR: Cannot fetch all images from https://en.wikipedia.org/wiki/Mascarene_parrot
+ERROR: Cannot fetch all images from https://en.wikipedia.org/wiki/U2
+ERROR: Cannot fetch all images from https://en.wikipedia.org/wiki/Nihonium
+ERROR: Cannot fetch all images from https://en.wikipedia.org/wiki/Ancient_Egypt
+ERROR: Cannot fetch all images from https://en.wikipedia.org/wiki/Are_You_Experienced
+91% completed
+ERROR: Cannot fetch all images from https://en.wikipedia.org/wiki/Chad
+ERROR: Cannot fetch all images from https://en.wikipedia.org/wiki/Hey_Jude
+92% completed
+ERROR: Cannot fetch all images from https://en.wikipedia.org/wiki/Chinua_Achebe
+ERROR: Cannot fetch all images from https://en.wikipedia.org/wiki/Huntington%27s_disease
+ERROR: Cannot fetch all images from https://en.wikipedia.org/wiki/Rwandan_Civil_War
+ERROR: Cannot fetch all images from https://en.wikipedia.org/wiki/Mascarene_grey_parakeet
+93% completed
+ERROR: Cannot fetch all images from https://en.wikipedia.org/wiki/Jomo_Kenyatta
+ERROR: Cannot fetch all images from https://en.wikipedia.org/wiki/Bah%C3%A1%27%C3%AD_Faith
+ERROR: Cannot fetch all images from https://en.wikipedia.org/wiki/Buzz_Aldrin
+ERROR: Cannot fetch all images from https://en.wikipedia.org/wiki/Hathor
+94% completed
+ERROR: Cannot fetch all images from https://en.wikipedia.org/wiki/Space_Invaders
+ERROR: Cannot fetch all images from https://en.wikipedia.org/wiki/Trapped_in_the_Closet_%28South_Park%29
+ERROR: Cannot fetch all images from https://en.wikipedia.org/wiki/Battle_of_Verri%C3%A8res_Ridge
+ERROR: Cannot fetch all images from https://en.wikipedia.org/wiki/Michael_Collins_%28astronaut%29
+95% completed
+ERROR: Cannot fetch all images from https://en.wikipedia.org/wiki/Paul_Kagame
+ERROR: Cannot fetch all images from https://en.wikipedia.org/wiki/Punk_rock
+ERROR: Cannot fetch all images from https://en.wikipedia.org/wiki/Manchester_United_F.C.
+ERROR: Cannot fetch all images from https://en.wikipedia.org/wiki/Order_of_Canada
+96% completed
+ERROR: Cannot fetch all images from https://en.wikipedia.org/wiki/Global_warming
+ERROR: Cannot fetch all images from https://en.wikipedia.org/wiki/Death_of_Cleopatra
+ERROR: Cannot fetch all images from https://en.wikipedia.org/wiki/Andr%C3%A9e%27s_Arctic_balloon_expedition
+ERROR: Cannot fetch all images from https://en.wikipedia.org/wiki/Cleopatra
+97% completed
+ERROR: Cannot fetch all images from https://en.wikipedia.org/wiki/Guadalcanal_campaign
+ERROR: Cannot fetch all images from https://en.wikipedia.org/wiki/Earth
+98% completed
+ERROR: Cannot fetch all images from https://en.wikipedia.org/wiki/Australia_women%27s_national_wheelchair_basketball_team_at_the_2012_Summer_Paralympics
+ERROR: Cannot fetch all images from https://en.wikipedia.org/wiki/Wittelsbach-class_battleship
+99% completed
+ERROR: Cannot fetch all images from https://en.wikipedia.org/wiki/Boston
+ERROR: Cannot fetch all images from https://en.wikipedia.org/wiki/India
+ERROR: Cannot fetch all images from https://en.wikipedia.org/wiki/South_Lake_Union_Streetcar
+ERROR: Cannot fetch all images from https://en.wikipedia.org/wiki/Ben_Affleck
+Downloaded 810 images, where 47 of them unavailable from commons
+Wall time: 1h 2min 32s
