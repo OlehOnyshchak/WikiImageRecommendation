@@ -1,8 +1,8 @@
 # Wikipedia Featured Articles multimodal dataset
 ## Overview
 This is a multimodal truncated dataset containing 500 [featured articles](https://en.wikipedia.org/wiki/Wikipedia:Featured_articles)
-with more than 8,000 images.
-A full version of the dataset, containing 5,638 pages and nearly 95,000 images, can be found [here](TODO: add link). It contains the text of an article along with all
+with more than 8,000 images. Its mirror is also uploaded to [Kaggle](https://www.kaggle.com/jacksoncrow/wiki-articles-multimodal).
+A full version of the dataset, containing 5,638 pages and nearly 95,000 images, can be found on [Google Drive](https://drive.google.com/open?id=18i0D-N1J18UC1ebT9qbHZegKJQiKba5z). It contains the text of an article along with all
 the images from that article. From Wikipedia, we selected featured articles, which is just a small subset of all available
 ones, because they are manually reviewed and protected from edits. Thus it's the best theoretical quality human editors on Wikipedia
 can offer.
