@@ -7,6 +7,8 @@ import hashlib
 import urllib
 from urllib.request import urlretrieve
 
+skipped_svg = set()
+
 
 def _clean(wiki_text):
     wikicode = mwp.parse(wiki_text)
@@ -44,17 +46,29 @@ def get_url(img_name, size=600):
 def img_download(img_links, page_dir, tc, uc):
     img_dir = get_path(page_dir/"img")
     for img in img_links:
-        img_name = img.title(as_filename=True, with_ns=False)            
-        img_name_valid = hashlib.md5(img_name.encode('utf-8')).hexdigest()
-            
+        img_name = img.title(as_filename=True, with_ns=False).replace("\"", "")
+        img_name_valid = hashlib.md5(img_name.encode('utf-8')).hexdigest()  
         img_path = img_dir / (img_name_valid + ".jpg")
+        
+        if img_name[-3:].lower() == "svg":
+            skipped_svg.add(get_url(img_name))
+            if img_path.exists():
+                img_path.unlink()
+                
+            continue
+            
         if img_path.exists(): continue
             
         img_path_orig = Path(str(img_path) + "_" + img_name + ".ORIGINAL")
+        if len(str(img_path_orig)) >= 260:
+            # pathlib doesn't support Win long path =(
+            img_path_orig = Path(str(img_path) + "_" + Path(img_name).suffix + ".ORIGINAL")
         if img_path_orig.exists(): continue
+            
             
         tc += 1
         try:
+            # TODO: remove & char from filenames before uploading to Kaggle
             urlretrieve(get_url(img_name), img_path)
         except:
             uc += 1
@@ -62,13 +76,18 @@ def img_download(img_links, page_dir, tc, uc):
             
     return (tc, uc)
 
+def file_log(coll, filename):
+    with open(filename, 'w') as f:
+        for item in coll:
+            f.write("%s\n" % item)
+
 def query(filename, out_dir='../data/', debug_info=True, offset=0, limit=None):   
-    print('Downloading...')
     site = pywikibot.Site()    
     pages = list(pagegenerators.TextfilePageGenerator(filename=filename, site=site))
     if not limit:
         limit = len(pages) + 1
     
+    print('Downloading... offset={}, limit={}'.format(offset, limit))
     prev_percent = -1
     tc = 0
     uc = 0
@@ -98,9 +117,7 @@ def query(filename, out_dir='../data/', debug_info=True, offset=0, limit=None):
             _dump(text_path, page_json)
             
         # downloading page images
-        try:
-            tc, uc = img_download(p.imagelinks(), page_dir, tc, uc) 
-        except:
-            print("ERROR: Cannot fetch all images from " + p.full_url())            
+        tc, uc = img_download(p.imagelinks(), page_dir, tc, uc)           
             
     print('Downloaded {} images, where {} of them unavailable from commons'.format(tc, uc))
+    file_log(skipped_svg, 'logs/skipped_svg_{}.txt'.format(offset))
