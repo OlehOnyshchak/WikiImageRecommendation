@@ -4,3 +4,4 @@ apicache-py3/
 .DS_Store
 throttle.ctrl
 pywikibot.lwp
+data/
