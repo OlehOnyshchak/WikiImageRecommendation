@@ -1,0 +1,3 @@
+[submodule "w2vv"]
+	path = w2vv
+	url = https://github.com/OlehOnyshchak/w2vv.git
