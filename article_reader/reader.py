@@ -9,6 +9,9 @@ import re
 from urllib.request import urlretrieve
 from html.parser import HTMLParser
 from html.entities import name2codepoint
+from os import listdir, stat
+from os.path import isfile, join
+
 
 skipped_svg = set()
 
@@ -78,11 +81,20 @@ def get_description(img):
     parser.feed(img.getImagePageHtml())
     return parser.get_description().replace("\n", "")
 
-def single_img_download(img, img_dir):
+def get_img_path(img, img_dir):
     img_name = img.title(as_filename=True, with_ns=False).replace("\"", "")
     img_name_valid = hashlib.md5(img_name.encode('utf-8')).hexdigest()  
     img_path = img_dir / (img_name_valid + ".jpg")
     
+    img_path_orig = Path(str(img_path) + "_" + img_name + ".ORIGINAL")
+    if len(str(img_path_orig)) >= 260:
+        # pathlib doesn't support Win long path =(
+        img_path_orig = Path(str(img_path) + "_" + Path(img_name).suffix + ".ORIGINAL")
+        
+    return img_name, img_path, img_path_orig
+
+def single_img_download(img, img_dir):
+    img_name, img_path, img_path_orig = get_img_path(img, img_dir)
     if img_name[-3:].lower() == "svg":
         skipped_svg.add(get_url(img_name))
         if img_path.exists():
@@ -93,10 +105,6 @@ def single_img_download(img, img_dir):
     if img_path.exists():
         return (False, img_path.name)
     
-    img_path_orig = Path(str(img_path) + "_" + img_name + ".ORIGINAL")
-    if len(str(img_path_orig)) >= 260:
-        # pathlib doesn't support Win long path =(
-        img_path_orig = Path(str(img_path) + "_" + Path(img_name).suffix + ".ORIGINAL")
     if img_path_orig.exists():
         return (False, img_path_orig.name)
     
@@ -108,11 +116,33 @@ def single_img_download(img, img_dir):
         print(str(e))
         img.download(filename=img_path_orig, chunk_size=8*1024)
         return (True, img_path_orig.name)
+    
+def remove_obsolete_imgs(img_dir, img_links):
+    uptodate_imgs = [get_img_path(img, img_dir) for img in img_links]
+    img_names = [x[1].name for x in uptodate_imgs]
+    img_names_orig = [x[2].name for x in uptodate_imgs]
+    
+    files = [img_dir/f for f in listdir(img_dir) if isfile(join(img_dir, f))]
+    for fpath in files:
+        fname = fpath.name
+        if stat(fpath).st_size == 0:
+            print("DELETE", fpath)
+            fpath.unlink()
+        elif fname[-4:].lower() != ".jpg" and fname[-9:].lower() != ".original":
+            continue
+        elif fname in img_names or fname in img_names_orig:
+            continue
+        else:
+            print("DELETE", fpath)
+            fpath.unlink()
+        
 
 
 def img_download(img_links, page_dir, tc, uc):
     img_dir = get_path(page_dir/"img", create_if_not_exists=True)
     meta_path = img_dir / 'meta.json'
+    remove_obsolete_imgs(img_dir, img_links)
+    
     download_meta = not meta_path.exists()
     meta = []
     for img in img_links:
