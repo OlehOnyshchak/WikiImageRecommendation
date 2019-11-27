@@ -199,6 +199,44 @@ def img_download(img_links, page_dir, tc, uc):
     
     return (tc, uc)
 
+def update_meta_description(filename, out_dir, offset=0, limit=None):
+    site = pywikibot.Site()    
+    pages = list(pagegenerators.TextfilePageGenerator(filename=filename, site=site))
+    limit = limit if limit else len(pages)
+    
+    for i in range(offset, min(offset + limit, len(pages))):
+        p = pages[i]
+        if p.pageid == 0:
+            print("ERROR: Cannot fetch the page " + p.title())
+            continue
+        
+        page_dir = get_path(out_dir + p.title(as_filename=True).rstrip('.'), create_if_not_exists=False)
+        if not page_dir.exists():
+            print('not page_dir.exists()', page_dir)
+            continue  # onyshchak: temporary switch to enrich only existing data
+            
+        print(i, p.title())
+        img_dir = get_path(page_dir/"img", create_if_not_exists=False)
+        meta_path = img_dir / 'meta.json'
+        meta = _getJSON(meta_path)
+        
+        updated = False
+        for img in p.imagelinks():
+            if not valid_img_type(img.title(with_ns=False)):
+                continue
+            
+            i = next(i for i,x in enumerate(meta['img_meta']) if x['title'] == img.title(with_ns=False))
+            updated_description = get_description(img)
+            if updated_description != meta['img_meta'][i]['description']:
+                updated = True
+                meta['img_meta'][i]['description'] = get_description(img)
+                print("DESCRIPTION", img_dir/meta['img_meta'][i]['filename'])
+            
+        if updated:
+            meta_json = json.dumps(meta)
+            _dump(meta_path, meta_json)
+    
+
 def file_log(coll, filename):
     with open(filename, 'w') as f:
         for item in coll:
@@ -215,8 +253,6 @@ def query(filename: str, params: QueryParams) -> None:
     site = pywikibot.Site()    
     pages = list(pagegenerators.TextfilePageGenerator(filename=filename, site=site))
     limit = params.limit if params.limit else len(pages)
-    if not limit:
-        limit = len(pages) + 1
     
     print('Downloading... offset={}, limit={}'.format(params.offset, limit))
     tc, uc = 0, 0
