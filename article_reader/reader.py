@@ -202,9 +202,9 @@ def img_download(img_links, page_dir, tc, uc):
 def update_meta_description(filename, out_dir, offset=0, limit=None):
     site = pywikibot.Site()    
     pages = list(pagegenerators.TextfilePageGenerator(filename=filename, site=site))
-    limit = limit if limit else len(pages)
+    limit = limit if limit else len(pages) - offset
     
-    for i in range(offset, min(offset + limit, len(pages))):
+    for i in range(offset, offset + limit):
         p = pages[i]
         if p.pageid == 0:
             print("ERROR: Cannot fetch the page " + p.title())
@@ -252,11 +252,11 @@ class QueryParams:
 def query(filename: str, params: QueryParams) -> None:   
     site = pywikibot.Site()    
     pages = list(pagegenerators.TextfilePageGenerator(filename=filename, site=site))
-    limit = params.limit if params.limit else len(pages)
+    limit = params.limit if params.limit else len(pages) - params.offset
     
     print('Downloading... offset={}, limit={}'.format(params.offset, limit))
     tc, uc = 0, 0
-    for i in range(params.offset, min(params.offset + limit, len(pages))):
+    for i in range(params.offset, params.offset + limit):
         p = pages[i]
         if p.pageid == 0:
             print("ERROR: Cannot fetch the page " + p.title())
