@@ -11,6 +11,8 @@ from html.parser import HTMLParser
 from html.entities import name2codepoint
 from os import listdir, stat
 from os.path import isfile, join
+from dataclasses import dataclass
+from typing import Optional
 
 
 skipped_svg = set()
@@ -48,6 +50,10 @@ def _dump(path, data):
     with open(path, 'w', encoding='utf8') as outfile:
         json.dump(data, outfile, indent=2, ensure_ascii=False)
         
+def _getJSON(path):
+    with open(path) as json_file:
+        return json.loads(json.load(json_file))
+    
 def query_size(filename):
     site = pywikibot.Site()
     pages = list(pagegenerators.TextfilePageGenerator(filename=filename, site=site))
@@ -93,9 +99,16 @@ def get_img_path(img, img_dir):
         
     return img_name, img_path, img_path_orig
 
+def valid_img_type(img_name):
+    invalid_types = ['.ogg', '.svg']
+    for t in invalid_types:
+        if img_name.lower().endswith(t):
+            return False
+    return True
+
 def single_img_download(img, img_dir):
     img_name, img_path, img_path_orig = get_img_path(img, img_dir)
-    if img_name[-3:].lower() == "svg":
+    if not valid_img_type(img_name):
         skipped_svg.add(get_url(img_name))
         if img_path.exists():
             img_path.unlink()
@@ -119,8 +132,10 @@ def single_img_download(img, img_dir):
     
 def remove_obsolete_imgs(img_dir, img_links):
     uptodate_imgs = [get_img_path(img, img_dir) for img in img_links]
-    img_names = [x[1].name for x in uptodate_imgs]
-    img_names_orig = [x[2].name for x in uptodate_imgs]
+    img_names = (
+        [x[1].name for x in uptodate_imgs if valid_img_type(x[0])] +
+        [x[2].name for x in uptodate_imgs if valid_img_type(x[0])]
+    )
     
     files = [img_dir/f for f in listdir(img_dir) if isfile(join(img_dir, f))]
     for fpath in files:
@@ -128,22 +143,42 @@ def remove_obsolete_imgs(img_dir, img_links):
         if stat(fpath).st_size == 0:
             print("DELETE", fpath)
             fpath.unlink()
-        elif fname[-4:].lower() != ".jpg" and fname[-9:].lower() != ".original":
-            continue
-        elif fname in img_names or fname in img_names_orig:
+        elif fname in img_names or fname[-5:].lower() == ".json":
             continue
         else:
             print("DELETE", fpath)
             fpath.unlink()
+    
+    meta_path = img_dir/'meta.json'
+    if not meta_path.exists():
+        return
+    
+    meta = _getJSON(meta_path)
+    uptodate_meta = [x for x in meta['img_meta'] if x['filename'] in img_names]
+    if len(meta['img_meta']) != len(uptodate_meta):
+        print("META", img_dir)
+        meta_json = json.dumps({"img_meta": uptodate_meta})
+        _dump(meta_path, meta_json)
         
-
+def is_meta_outdated(meta_path, img_links):
+    if not meta_path.exists():
+        return True
+    
+    meta = _getJSON(meta_path)['img_meta']
+    meta_titles = [x['title'] for x in meta]
+    current_titles = [x.title(with_ns=False) for x in img_links if valid_img_type(x.title(with_ns=False))]
+    
+    res = sorted(meta_titles) != sorted(current_titles)
+    if res: print("OUTDATED META",  meta_path)
+    return res
+    
 
 def img_download(img_links, page_dir, tc, uc):
     img_dir = get_path(page_dir/"img", create_if_not_exists=True)
     meta_path = img_dir / 'meta.json'
     remove_obsolete_imgs(img_dir, img_links)
     
-    download_meta = not meta_path.exists()
+    download_meta = is_meta_outdated(meta_path, img_links)
     meta = []
     for img in img_links:
         downloaded, filename = single_img_download(img, img_dir)
@@ -169,34 +204,34 @@ def file_log(coll, filename):
         for item in coll:
             f.write("%s\n" % item)
 
-def query(filename, out_dir='../data/', debug_info=True, offset=0, limit=None):   
+@dataclass
+class QueryParams:
+    out_dir: str = '../data/'
+    debug_info: bool = True
+    offset: int = 0
+    limit: Optional[int] = None
+
+def query(filename: str, params: QueryParams) -> None:   
     site = pywikibot.Site()    
     pages = list(pagegenerators.TextfilePageGenerator(filename=filename, site=site))
+    limit = params.limit if params.limit else len(pages) + 1
     if not limit:
         limit = len(pages) + 1
     
-    print('Downloading... offset={}, limit={}'.format(offset, limit))
-    prev_percent = -1
-    tc = 0
-    uc = 0
-    for i in range(offset, min(offset + limit, len(pages))):
+    print('Downloading... offset={}, limit={}'.format(params.offset, limit))
+    tc, uc = 0, 0
+    for i in range(params.offset, min(params.offset + limit, len(pages))):
         p = pages[i]
         if p.pageid == 0:
             print("ERROR: Cannot fetch the page " + p.title())
             continue
             
-        if debug_info:
-            percent = int(i / len(pages) * 100)
-            if prev_percent != percent:
-                prev_percent = percent
-                print('{}% completed'.format(percent))
-            
-        
-        page_dir = get_path(out_dir + p.title(as_filename=True).rstrip('.'), create_if_not_exists=False)  # onyshchak: set to True
+        # onyshchak: set to True
+        page_dir = get_path(params.out_dir + p.title(as_filename=True).rstrip('.'), create_if_not_exists=False)
         if not page_dir.exists():
             continue  # onyshchak: temporary switch to enrich only existing data
         
-        print(page_dir)
+        if params.debug_info: print(i, page_dir)
         text_path = page_dir / 'text.json'
         if not text_path.exists():
             page_json = json.dumps({
@@ -212,4 +247,4 @@ def query(filename, out_dir='../data/', debug_info=True, offset=0, limit=None):
         tc, uc = img_download(p.imagelinks(), page_dir, tc, uc)           
             
     print('Downloaded {} images, where {} of them unavailable from commons'.format(tc, uc))
-    file_log(skipped_svg, 'logs/skipped_svg_{}.txt'.format(offset))
+    file_log(skipped_svg, 'logs/skipped_svg_{}.txt'.format(params.offset))
