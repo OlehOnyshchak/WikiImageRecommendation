@@ -214,7 +214,7 @@ class QueryParams:
 def query(filename: str, params: QueryParams) -> None:   
     site = pywikibot.Site()    
     pages = list(pagegenerators.TextfilePageGenerator(filename=filename, site=site))
-    limit = params.limit if params.limit else len(pages) + 1
+    limit = params.limit if params.limit else len(pages)
     if not limit:
         limit = len(pages) + 1
     
