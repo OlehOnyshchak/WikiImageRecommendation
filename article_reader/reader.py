@@ -100,11 +100,14 @@ def get_img_path(img, img_dir):
     return img_name, img_path, img_path_orig
 
 def valid_img_type(img_name):
-    invalid_types = ['.ogg', '.svg']
-    for t in invalid_types:
+    # onyshchak: exclude .svg since most of it is icons. Althouh, should do better filtering
+    valid_types = [
+        '.tif', '.tiff', '.jpg', '.jpeg', '.jpe', '.jif,', '.jfif', '.jfi',  '.gif', '.png'
+    ]
+    for t in valid_types:
         if img_name.lower().endswith(t):
-            return False
-    return True
+            return True
+    return False
 
 def single_img_download(img, img_dir):
     img_name, img_path, img_path_orig = get_img_path(img, img_dir)
@@ -199,6 +202,7 @@ def img_download(img_links, page_dir, tc, uc):
     
     return (tc, uc)
 
+# onyshchak: TODO - add 'on_commons' flag to meta + exreact features from all ORIGINAL files
 def update_meta_description(filename, out_dir, offset=0, limit=None):
     site = pywikibot.Site()    
     pages = list(pagegenerators.TextfilePageGenerator(filename=filename, site=site))
@@ -269,7 +273,8 @@ def query(filename: str, params: QueryParams) -> None:
         
         if params.debug_info: print(i, page_dir)
         text_path = page_dir / 'text.json'
-        if not text_path.exists():
+        if not text_path.exists() or stat(text_path).st_size == 0:
+            if params.debug_info: print("Downloading text.json")
             page_json = json.dumps({
                 "title": p.title(),
                 "id": p.pageid,
