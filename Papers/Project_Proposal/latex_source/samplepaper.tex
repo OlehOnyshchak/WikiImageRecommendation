@@ -33,14 +33,14 @@
 %\titlerunning{Abbreviated paper title}
 % If the paper title is too long for the running head, you can set
 % an abbreviated paper title here
-\author{Oleh Onyshchak\inst{1}}
+\author{Oleh Onyshchak\inst{1} \and Miriam Redi\inst{2}}
 %\authorrunning{F. Author et al.}
 % First names are abbreviated in the running head.
 % If there are more than two authors, 'et al.' is used.
 %
-\institute{Ukrainian Catholic University, Lviv, Ukraine\\
-\email{o.onyshchak@ucu.edu.ua}\\
-\url{https://apps.ucu.edu.ua/en/}}
+\institute{Ukrainian Catholic University, Lviv, Ukraine. Faculty of Applied Sciences\\
+\email{o.onyshchak@ucu.edu.ua \and 
+Wikimedia Foundation. London, UK}}
 %
 \maketitle              % typeset the header of the contribution
 %
@@ -59,13 +59,6 @@ Copyright © 2019 for this paper by its authors. Use permitted under Creative Co
 }
 \newpage
 
-%
-%
-%
-\tableofcontents
-\newpage
-
-
 \section{Introduction}
 Every day we perceive the world around us through multiple cognitive feelings such as sight, smell, hearing, touch, taste. Moreover, our ability to consolidate all the information from different sources into one complete picture helps us comprehensively understand the world.
 
@@ -83,7 +76,7 @@ This report is an official Project Proposal of Master's Thesis, which will forma
 
 
 \section{Problem Motivation}
-Wikipedia is the biggest collection of human knowledge containing more than 35 million pages and having nearly 9 billion views per month\footnote{\url{https://stats.wikimedia.org/v2/#/en.wikipedia.org}} And it continually growing, having more than 500 new pages per day\footnote{\url{https://en.wikipedia.org/wiki/Wikipedia:Statistics}}, and all of that only in its English version.
+Wikipedia is the biggest collection of human knowledge containing more than 35 million pages and having nearly 9 billion views per month\footnote{\url{https://stats.wikimedia.org/v2/##/en.wikipedia.org}} And it continually growing, having more than 500 new pages per day\footnote{\url{https://en.wikipedia.org/wiki/Wikipedia:Statistics}}, and all of that only in its English version.
 
 As a part of 2030 strategy, one of the key goals is to break down any barriers for accessing free information\footnote{\url{https://meta.wikimedia.org/wiki/Strategy/Wikimedia_movement/2017/Direction}}. By researching possibilities to automatically recommend images for Wikipedia editors, it will help to get better media enrichment of articles, which in turn will make information easier and faster to comprehend\cite{ref_image_attention}. Also, it would be helpful as automation of time-consuming task to search for and add a proper article visualization. 
 
@@ -107,12 +100,6 @@ While during the last decades there was much progress in a field of unimodal rep
 
 In this chapter, we will cover available techniques to extract features from text and image modalities, overview available solutions in each type of multimodal learning, and then summarise their applicability for our problem.
 
-\begin{figure}
-\includegraphics[width=\textwidth]{multimodal_learning_types.png}
-\caption{Three types of frameworks about deep multimodal representation. (a) Joint representation aims to learn a shared semantic subspace.(b) Coordinated representation framework learns separated but coordinated representations for each modality under some constraints.
-(c) intermediate representation framework translates one modality into another and keep their semantics consistent.\cite{ref_survey}} \label{fig1}
-\end{figure}
-
 \subsection{Unimodal Representation}
 \subsubsection{Image}
 The most popular model used in feature extraction from images are different types of Convolutional Neural Network(CNN), such as AlexNet\cite{ref_AlexNet}, VGGNet\cite{ref_VGGNet} and ResNet\cite{ref_ResNet}. When working with big datasets, it is preferable to use pre-trained version of chosen CNN. This field has tremendous development in recent years, and thus currently we already have well-defined solution for most problems.
@@ -121,6 +108,12 @@ The most popular model used in feature extraction from images are different type
 A popular way to extract features from the text is to encode it to vector, as is done in word2vec\cite{ref_word2vec} or Glove\cite{ref_glove} algorithms. They map words into one-hot encoded vector space of language vocabulary. Although, the common problem with those approaches is when some words are not present in vocabulary or out-of-vocabulary error. However, there are also a variety of solutions to this problem, such as character embeddings\cite{ref_char_embeddings}. 
 
 An alternative and more powerful tool for dealing with text is recurrent neural network(RNN)\cite{ref_rnn}, which is more context-aware and can make better encoding of the n-th word, knowing what was already in a sentence. One of the most successful realizations of RNN is long short-term memory(LSTM)\cite{ref_lstm}.
+
+\begin{figure}
+\includegraphics[width=\textwidth]{multimodal_learning_types.png}
+\caption{Three types of frameworks about deep multimodal representation. (a) Joint representation aims to learn a shared semantic subspace.(b) Coordinated representation framework learns separated but coordinated representations for each modality under some constraints.
+(c) intermediate representation framework translates one modality into another and keep their semantics consistent.\cite{ref_survey}} \label{fig1}
+\end{figure}
 
 \subsection{Joint Representation}
 The main idea of joint representation is to integrate multimodal features into a single input, which we then process as some artificial unimodal input with well-known machine learning techniques. More formally, it aims to project unimodal representations into a shared semantic subspace, where the multimodal features can be fused\cite{ref_survey_baltrusaitis},  as shown in Figure \ref{fig1}(a). Up until recently, that was the primary technique in multimodal learning, where shared features were fused by concatenating them together. However, now,  the most popular choice is to use a distinct hidden layer, where modality-specific features will be combined into a single output vector.
@@ -140,7 +133,8 @@ The general advantage of such approach is that it is one of the best ways to gen
 \subsection{Coordinated Representation}
 The last type of multimodal learning is a coordinated representation. Instead of learning from a joint representation, it learns from modal-specific representations separately but with a shared constraint, which is some loss function identifying cross-modal similarity/correlation. Since different modalities hold unique information about an object, that approach operates with all available knowledge. A visual explanation can be seen in Figure \ref{fig1}(b). Regarding constraint function, a commonly used option is cross-modal similarity functions, where learning objective is to preserve both inter-modality and intra-modality similarity structure. In other words, it would force cross-modal distance for elements with the same semantics be as small as possible, while with dissimilar - as big as possible. 
 
-% TODO: specify what specifically function S can be and how it works
+% TODO: specify what specifically function S can be and how it works. Note
+% about copy-paste from here into solution approach
 The cross-modal ranking is a widely used constrain, where the loss function is defined in the following way
 \begin{equation} \label{eq_rank_loss}
 \sum_i \sum_{t^-} max(0, \alpha - S(i, t) + S(i, t^-)) + \sum_t \sum_{i^-} max(0, \alpha - S(t, i) + S(t, i^-))
@@ -148,23 +142,24 @@ The cross-modal ranking is a widely used constrain, where the loss function is d
 where (i,t) is a matching image-text pair, $\alpha$ is margin, S is a similarity function, $i^-$ is mismatching pair to $t$ and vise versa. Frome et al.\cite{ref_devise} used a combination of dot-product similarity and margin rank loss to learn a visual-semantic embedding model(DeViSE) for visual recognition\cite{ref_survey}. DeViSE trains deep networks for both image and text features, and then adjust features based on above mentioned ranked loss, though in more simplified form.
 
 Alternatively to cross-modal ranking, another widely used constraint is Euclid distance, which is also used for ensuring that similarity structure for both intra-modality and inter-modality is preserved. That is, for inter-modality, we map text and image features into low-dimensional space, where we can calculate the distance between feature vectors. The idea here is to ensure that inter-modality features of the same semantics are as close as possible\cite{ref_pan}. While for intra-modality, we want to preserve the similarity between neighborhood items, that is:
-$$ d(m_i, m_j) + m < d(m_i, m_k), \forall m_j \in N(m_i), \forall m_k \notin N(m_i),$$
+\begin{equation} \label{eq_eucl_loss}
+d(m_i, m_j) + m < d(m_i, m_k), \forall m_j \in N(m_i), \forall m_k \notin N(m_i)
+\end{equation}
 where $m$ is data point of any modality, $m_i$ point of interest, N(m) - denotes neighborhood of m\cite{ref_wang}.
 % TODO: what is m specifically in a formula? Correct it!
 
 So, Coordinated Representation preserves all modality-specific information. It also explicitly compares features from different modalities, thus having data from one, we can identify the closest data point from another modality. Because of those properties, it is used for cross-modal retrieval\cite{ref_wang}, retrieval-based visual description\cite{ref_socher}, and transfer knowledge across modalities\cite{ref_pan}. Thus it can be applied for our problem of Image Recommendation for articles, and we will proceed with those methods.
 
+\begin{figure}
+\includegraphics[width=\textwidth]{dual_encoding.jpg}
+\caption{Example of Coordinated Representation learning pipeline\cite{ref_dual_encoding}} \label{fig2}
+\end{figure}
 
 \section{Solution Approach}
 After rigor overview of related work, Coordinated Representation techniques were identified as the most prominent direction for our problem. Coordinated Representation approach aims to exploit modality-specific features fully, thus we train each feature modality separately.
 % TODO: for our solution? (not problem)
 
 To make the system learn right features in each modality, we map all of them into space where inter-modality similarity can be evaluated but also preserving the intra-modality similarity structure\cite{ref_cross_modal_hash}\cite{ref_devise}\cite{ref_kiros}. Then we identify loss function, by enforcing ranking function (\ref{eq_rank_loss}) in that space to return high values for mismatches modality pairs and small otherwise. That would be a loss function, which each modality-specific model will be minimizing, thus empowering modality-specific feature learning. You can see visualisation of this idea on Figure \ref{fig2}.
-
-\begin{figure}
-\includegraphics[width=\textwidth]{dual_encoding.jpg}
-\caption{Example of Coordinated Representation learning pipeline\cite{ref_dual_encoding}} \label{fig2}
-\end{figure}
 
 We will focus on integrating recent Word2VisualVec\cite{ref_w2vv} and dual encoding\cite{ref_dual_encoding} models to our more broader and more realistic problem settings. They showed impressive results but were evaluated on more narrow problem. More specifically, they were working with Flickr dataset\cite{ref_flickr} where one image corresponds to 5 descriptive sentences. In our settings we have one article corresponding to multiple images, where all of them having additional metadata such as category, name, description.
 
@@ -185,12 +180,11 @@ Since we have a labeled dataset, classical evaluation metrics would be applied h
 
 When scaling up on real-world image dataset size, evaluation metrics will require additional improvements such as merging visually similar images from top-ranked matches, although it is out of the scope of testing our hypothesis.
 
-
-\section{Goals}
-The goal of the project is to research whether it is possible to implement a system, which would recommend relevant Commons\cite{ref_wiki_commons} images for a specific Wikipedia article. Thus we are planning to investigate the scientific landscape in that area and provide report whether it can solve our specific problem of image recommendation with Wikipedia dataset. We do not expect to create a complete end-to-end solution but rather investigate a path towards it is feasible.
-
 \section{Time Plan}
-\begin{center}
+You can find timetable of milestones in the Table \ref{table_time_plan}
+\begin{table}[htbp]
+\centering
+\caption{\label{table_time_plan}Time Plan}
  \begin{tabular}{| l | l |} 
  \hline
  Date & Milestone \\
@@ -218,7 +212,10 @@ The goal of the project is to research whether it is possible to implement a sys
  8 Jan 2020 & Thesis Final Submission \\
  \hline
 \end{tabular}
-\end{center}
+\end{table}
+
+\section{Goals}
+The goal of the project is to research whether it is possible to implement a system, which would recommend relevant Commons\cite{ref_wiki_commons} images for a specific Wikipedia article. Thus we are planning to investigate the scientific landscape in that area and provide report whether it can solve our specific problem of image recommendation with Wikipedia dataset. We do not expect to create a complete end-to-end solution but rather investigate a path towards it is feasible.
 
 %
 % ---- Bibliography ----
