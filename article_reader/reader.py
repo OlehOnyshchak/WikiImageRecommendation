@@ -176,7 +176,10 @@ def is_meta_outdated(meta_path, img_links):
     return res
     
 
-def img_download(img_links, page_dir, tc, uc):
+def img_download(img_links, page_dir, invalidate_img_cache, tc, uc):
+    if invalidate_img_cache:
+        shutil.rmtree(page_dir/"img", ignore_errors=True)
+        
     img_dir = get_path(page_dir/"img", create_if_not_exists=True)
     meta_path = img_dir / 'meta.json'
     remove_obsolete_imgs(img_dir, img_links)
@@ -252,6 +255,7 @@ class QueryParams:
     debug_info: bool = True
     offset: int = 0
     limit: Optional[int] = None
+    invalidate_img_cache: bool = False
 
 def query(filename: str, params: QueryParams) -> None:   
     site = pywikibot.Site()    
@@ -285,7 +289,7 @@ def query(filename: str, params: QueryParams) -> None:
             _dump(text_path, page_json)
             
         # downloading page images
-        tc, uc = img_download(p.imagelinks(), page_dir, tc, uc)           
+        tc, uc = img_download(p.imagelinks(), page_dir, params.invalidate_img_cache, tc, uc)           
             
     print('Downloaded {} images, where {} of them unavailable from commons'.format(tc, uc))
     file_log(skipped_svg, 'logs/skipped_svg_{}.txt'.format(params.offset))
