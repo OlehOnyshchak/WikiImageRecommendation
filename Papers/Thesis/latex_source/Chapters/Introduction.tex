@@ -1,0 +1,29 @@
+\chapter{Introduction}
+\section{Domain Overview}
+
+Every day we perceive the world around us through multiple cognitive feelings such as sight, smell, hearing, touch, taste. Moreover, our ability to consolidate all the information from different sources into one complete picture helps us comprehensively understand the world.
+
+With a trend to digitizing in the last few decades, more and more information is recorded in different kids of medial such as audio, image, video, text, and 3D modeling. That also created new challenges of efficiently processing a significant amount of recorded information, where we already have significant achievements. However, every type of digital storage only captures some subset of available information. For example, image only captures visual appearance, while  audio - the sound, just as our eyes and ears do. Thus all scientific progress in processing some data carrier is bounded by limitation of what that medium can capture. In other words, to digitally create a notion of a dog, we cannot only have a visual representation. Just as humans, we need to combine all the information streams, which describe the same entity from different perspectives, into one comprehensive representation.
+
+That is the motivation for multimodal representation learning, which aims to combine different types of data into a complete representation of a real-world entity. In that context, the word "modality" refers to a particular way of encoding information. Thus a problem in the domain of e.g., image processing is called unimodal, while a problem in the domain of multiple information encodings e.g., image to caption generation, is called multimodal since it works with both: image and text modalities \cite{ref_survey} 
+
+By having a complete representation of an entity, which was created via multimodal data that captures complementary/supplementary information subsets of an object, we have more comprehensive computational "understanding" of that entity. That will help us to increase the precision of existing data science applications and also extend its limits to more abstract problems such as not only identifying the objects on an image but understanding its value. For example\cite{ref_survey}, early researches on speech recognition showed that by involving visual modality of lips movement on top of sound modality, we get extra information which allows us to increase the quality of voice recognition task, just as it does for humans\cite{ref_human_voice_recognition}
+
+In this project, we are going to research possible approaches for the "Image Recommendation for Wikipedia Articles" problem, which is also part of multimodal representation learning domain. That is, based on the article's text information, we need to recommend images describing the same notion. In other words, we need to create a high-level representation of some entity, described by both text and images. So that later one we can "understand" which image representation of the notion is the best suited for a given text description.
+
+In scope of this project, we are going to explore state-of-the-art techniques of multimodal representation learning and whether they can be applied to solve this problem. We believe this project will be valuable from both a research and an application perspectives.
+
+This report is an official Project Proposal of Master's Thesis, which will formally define the problem, provide rigor overview of state-of-the-art approaches in problem's domain, specify goals of the project, suggest a solution approach and provide a time plan of the thesis.
+
+\section{Problem Motivation}
+Wikipedia is the biggest collection of human knowledge containing more than 35 million pages and having nearly 9 billion views per month\footnote{\url{https://stats.wikimedia.org/v2/##/en.wikipedia.org}} And it continually growing, having more than 500 new pages per day\footnote{\url{https://en.wikipedia.org/wiki/Wikipedia:Statistics}}, and all of that only in its English version.
+
+As a part of 2030 strategy, one of the key goals is to break down any barriers for accessing free information\footnote{\url{https://meta.wikimedia.org/wiki/Strategy/Wikimedia_movement/2017/Direction}}. By researching possibilities to automatically recommend images for Wikipedia editors, it will help to get better media enrichment of articles, which in turn will make information easier and faster to comprehend\cite{ref_image_attention}. Also, it would be helpful as automation of time-consuming task to search for and add a proper article visualization. 
+
+In addition to motivation of making Wikipedia better, this work might present some useful insights to development of multimodal learning field. Since this is a 1) purely real-world problem, which might give us interesting insights of how to apply and adjust current academia progress, and also 2) we have a more complicated problem setting of one large article corresponding to a multiple images, instead of more simplified one-to-one correspondas of images and its tags/descriptive sentences.
+
+
+\section{Problem Formulation}
+We are going to research how state-of-the-art multimodal learning techniques performs on a task of recommending images for Wikipedia articles. In other words, having a text with wiki formatting, we need to rank images from Wikimedia Commons database\cite{ref_wiki_commons} by relevance.
+
+\endinput

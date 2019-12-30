@@ -1,0 +1,89 @@
+\chapter{Data}
+\section{Overview}
+All data is publicly available on Wikipedia. Specifically, we have more than 35 million Wikipedia pages with a fair amount of them enriched with images. We also have Commons image dataset\cite{ref_wiki_commons}, containing more than 55 million images\footnote{\url{https://en.wikipedia.org/wiki/Wikimedia_Commons}}. That is the real-world data, where ultimately the solution should be applied.
+
+But for initial problem research we would only use a reliable subset of above specified data for training. In particular, Wikipedia has a notion of featured articles\footnote{\url{https://en.wikipedia.org/wiki/Wikipedia:Featured_articles}}, which are the best articles with qualitative text and a lot of supporting visualization. In other words, it is a high quality dataset of more than 5000 articles, each of which has multiple associated images, which was manually created. Although, it still requires proper preprocessing and cleaning before using.
+
+Particularly, by text we mean the entire article textual content cleared from Wikipedia formatting along with some extra metadata such as categories or title. Images also collected with additional metadata such as filenames or descriptions.
+
+\section{Structure}
+\subsection{High-Level Structure}
+\begin{lstlisting}[language=json,firstnumber=1]
+    .
+    +-- page1  
+    |   +-- text.json  
+    |   +-- img  
+    |       +-- meta.json
+    +-- page2  
+    |   +-- text.json  
+    |   +-- img  
+    |       +-- meta.json
+    :  
+    +-- pageN  
+    |   +-- text.json  
+    |   +-- img  
+    |       +-- meta.json
+\end{lstlisting}
+
+where:
+\begin{itemize}
+    \item[$\ast$] pageN - is the title of N-th Wikipedia page and contains all information about the page
+    \item[$\ast$] text.json - text of the page saved as JSON. Please refer to the details of JSON schema below.
+    \item[$\ast$] meta.json- a collection of all images of the page. Please refer to the detals o of JSON schema below.
+    \item[$\ast$] imageN - is the N-th image of an article, saved in `jpg` format where width of each image is set to 600px. Name of the image is md5 hashcode of original image title. 
+\end{itemize}
+
+\subsection{text.json Schema}
+\begin{lstlisting}[language=json,firstnumber=1]
+{
+  "title": "Naval Battle of Guadalcanal",
+  "id": 405411,
+  "url": "https://en.wikipedia.org/wiki/Naval_Battle_of_Guadalcanal",
+  "text": "The Naval Battle of Guadalcanal, sometimes referred to.. ",
+ }
+\end{lstlisting}
+
+where:
+
+\begin{itemize}
+    \item[$\ast$] title - page title
+    \item[$\ast$] id - unique page id
+    \item[$\ast$] url - url of a page on Wikipedia
+    \item[$\ast$] text - text content of the article escaped from Wikipedia formatting
+\end{itemize}
+
+\subsection{meta.json Schema}
+
+\begin{lstlisting}[language=json,firstnumber=1]
+{
+  "img_meta": [
+    {
+      "filename": "d681a3776d93663fc2788e7e469b27d7.jpg",
+      "title": "Metallica Damaged Justice Tour.jpg",
+      "description": "Metallica en concert",
+      "url": "https://en.wikipedia.org/wiki/File%3AMetallica_Damaged_Justice_Tour.jpg",
+      "features": [123.23, 10.21, ..., 24.17],
+     },
+   ]
+}
+\end{lstlisting}
+
+where:
+\begin{itemize}
+    \item[*] filename - unique image id, md5 hashcode of original image title
+    \item[*] title - image title retrieved from Commons, if applicable
+    \item[*] url - url of an image on Wikipedia
+    \item[*] features - output of 5-th convolutional layer of ResNet152 trained on ImageNet dataset. Features taken from original images downloaded in `jpeg` format with fixed width of 600px. Practically, it is a list of floats with len = 2048.
+\end{itemize}
+
+Please note that some images are not embedded on Wikipedia page from Commons, thus we can only download them in original type \& size. If you want to use those as well, those images should be properly processed later. Each such image can be identified by suffix `.ORIGINAL` in a `filename` and absence of key `features`. Raw images are available in complete version of dataset\footnote{\url{https://drive.google.com/file/d/1l0Oyv2Y6LmPGN3lP9MB6i8WWCinqkYPk/view?usp=sharing}}
+
+\section{Resources}
+\begin{itemize}
+    \item[*] complete dataset which includes raw images is available from Google Drive \footnotemark[\value{footnote}]
+    \item[*] processed dataset is publicly available from Kaggle\footnote{\url{https://www.kaggle.com/jacksoncrow/extended-wikipedia-multimodal-dataset}}
+    \item[*] data was collected by fetching featured articles text \& image content with pywikibot library\footnote{\url{https://pypi.org/project/pywikibot/}}
+    \item[*] collection script is available on GitHub\footnote{\url{https://github.com/OlehOnyshchak/WikiImageRecommendation/blob/master/article_reader/reader.py}}
+\end{itemize}
+
+\endinput

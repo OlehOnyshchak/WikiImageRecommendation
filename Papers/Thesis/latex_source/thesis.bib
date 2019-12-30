@@ -1,0 +1,821 @@
+
+@ARTICLE{ref_rnn,
+  title     = "Finding Structure in Time",
+  author    = "Elman, Jeffrey L",
+  abstract  = "Time underlies many interesting human behaviors. Thus, the
+               question of how to represent time in connectionist models is
+               very important. One approach is to represent time implicitly by
+               its effects on processing rather than explicitly (as in a
+               spatial representation). The current report develops a proposal
+               along these lines first described by Jordan (1986) which
+               involves the use of recurrent links in order to provide networks
+               with a dynamic memory. In this approach, hidden unit patterns
+               are fed back to themselves: the internal representations which
+               develop thus reflect task demands in the context of prior
+               internal states. A set of simulations is reported which range
+               from relatively simple problems (temporal version of XOR) to
+               discovering syntactic/semantic features for words. The networks
+               are able to learn interesting internal representations which
+               incorporate task demands with memory demands: indeed, in this
+               approach the notion of memory is inextricably bound up with task
+               processing. These representations reveal a rich structure, which
+               allows them to be highly context-dependent, while also
+               expressing generalizations across classes of items. These
+               representations suggest a method for representing lexical
+               categories and the type/token distinction.",
+  journal   = "Cogn. Sci.",
+  publisher = "Wiley Online Library",
+  volume    =  14,
+  number    =  2,
+  pages     = "179--211",
+  month     =  mar,
+  year      =  1990
+}
+
+% The entry below contains non-ASCII chars that could not be converted
+% to a LaTeX equivalent.
+@BOOK{ref_image_attention,
+  title     = "Persuasion and the role of visual presentation support: The
+               {UM/3M} study",
+  author    = "Vogel, Douglas Rudy and Dickson, Gary W and Lehman, John A and
+               {Others}",
+  abstract  = "This paper summarizes the findings of a study designed to
+               systematically explore how computer generated visual support
+               affects the persuasiveness of a presentation. Perceptions of the
+               presenter as well as audience attention, comprehension,
+               yielding, and retention culminating in action were enhanced when
+               presentation support was used compared to when it was not.
+               Further, the persuasive impact of a presentation was shown to
+               depend on characteristics of the support used. Characteristics
+               examined were color vs …",
+  publisher = "Management Information Systems Research Center, School of
+               Management …",
+  year      =  1986
+}
+
+% The entry below contains non-ASCII chars that could not be converted
+% to a LaTeX equivalent.
+@INPROCEEDINGS{ref_wang,
+  title     = "Learning deep structure-preserving image-text embeddings",
+  booktitle = "Proceedings of the {IEEE} conference on computer vision and
+               pattern recognition",
+  author    = "Wang, Liwei and Li, Yin and Lazebnik, Svetlana",
+  abstract  = "This paper proposes a method for learning joint embeddings of
+               images and text using a two- branch neural network with multiple
+               layers of linear projections followed by nonlinearities. The
+               network is trained using a large margin objective that combines
+               cross-view ranking constraints with within-view neighborhood
+               structure preservation constraints inspired by metric learning
+               literature. Extensive experiments show that our approach gains
+               significant improvements in accuracy for image-to-text and
+               text-to-image retrieval. Our method achieves …",
+  publisher = "cv-foundation.org",
+  pages     = "5005--5013",
+  year      =  2016
+}
+
+% The entry below contains non-ASCII chars that could not be converted
+% to a LaTeX equivalent.
+@INPROCEEDINGS{ref_pan,
+  title     = "Jointly modeling embedding and translation to bridge video and
+               language",
+  booktitle = "Proceedings of the {IEEE} conference on computer vision and
+               pattern recognition",
+  author    = "Pan, Yingwei and Mei, Tao and Yao, Ting and Li, Houqiang and
+               Rui, Yong",
+  abstract  = "Automatically describing video content with natural language is
+               a fundamental challenge of computer vision. Recurrent Neural
+               Networks (RNNs), which models sequence dynamics, has attracted
+               increasing attention on visual interpretation. However, most
+               existing approaches generate a word locally with the given
+               previous words and the visual content, while the relationship
+               between sentence semantics and visual content is not
+               holistically exploited. As a result, the generated sentences may
+               be contextually correct but the …",
+  publisher = "openaccess.thecvf.com",
+  pages     = "4594--4602",
+  year      =  2016
+}
+
+@ARTICLE{ref_socher,
+  title     = "Grounded Compositional Semantics for Finding and Describing
+               Images with Sentences",
+  author    = "Socher, Richard and Karpathy, Andrej and Le, Quoc V and Manning,
+               Christopher D and Ng, Andrew Y",
+  abstract  = "Previous work on Recursive Neural Networks (RNNs) shows that
+               these models can produce compositional feature vectors for
+               accurately representing and classifying sentences or images.
+               However, the sentence vectors of previous models cannot
+               accurately represent visually grounded meaning. We introduce the
+               DT-RNN model which uses dependency trees to embed sentences into
+               a vector space in order to retrieve images that are described by
+               those sentences. Unlike previous RNN-based models which use
+               constituency trees, DT-RNNs naturally focus on the action and
+               agents in a sentence. They are better able to abstract from the
+               details of word order and syntactic expression. DT-RNNs
+               outperform other recursive and recurrent neural networks,
+               kernelized CCA and a bag-of-words baseline on the tasks of
+               finding an image that fits a sentence description and vice
+               versa. They also give more similar representations to sentences
+               that describe the same image.",
+  journal   = "Transactions of the Association for Computational Linguistics",
+  publisher = "MIT Press",
+  volume    =  2,
+  pages     = "207--218",
+  month     =  dec,
+  year      =  2014
+}
+
+@ARTICLE{ref_kiros,
+  title         = "Unifying {Visual-Semantic} Embeddings with Multimodal Neural
+                   Language Models",
+  author        = "Kiros, Ryan and Salakhutdinov, Ruslan and Zemel, Richard S",
+  abstract      = "Inspired by recent advances in multimodal learning and
+                   machine translation, we introduce an encoder-decoder
+                   pipeline that learns (a): a multimodal joint embedding space
+                   with images and text and (b): a novel language model for
+                   decoding distributed representations from our space. Our
+                   pipeline effectively unifies joint image-text embedding
+                   models with multimodal neural language models. We introduce
+                   the structure-content neural language model that
+                   disentangles the structure of a sentence to its content,
+                   conditioned on representations produced by the encoder. The
+                   encoder allows one to rank images and sentences while the
+                   decoder can generate novel descriptions from scratch. Using
+                   LSTM to encode sentences, we match the state-of-the-art
+                   performance on Flickr8K and Flickr30K without using object
+                   detections. We also set new best results when using the
+                   19-layer Oxford convolutional network. Furthermore we show
+                   that with linear encoders, the learned embedding space
+                   captures multimodal regularities in terms of vector space
+                   arithmetic e.g. *image of a blue car* - ``blue'' + ``red''
+                   is near images of red cars. Sample captions generated for
+                   800 images are made available for comparison.",
+  month         =  nov,
+  year          =  2014,
+  archivePrefix = "arXiv",
+  primaryClass  = "cs.LG",
+  eprint        = "1411.2539"
+}
+
+% The entry below contains non-ASCII chars that could not be converted
+% to a LaTeX equivalent.
+@INCOLLECTION{ref_devise,
+  title     = "{DeViSE}: A Deep {Visual-Semantic} Embedding Model",
+  booktitle = "Advances in Neural Information Processing Systems 26",
+  author    = "Frome, Andrea and Corrado, Greg S and Shlens, Jon and Bengio,
+               Samy and Dean, Jeff and Ranzato,
+               Marc\textbackslashtextquotesingle Aurelio and Mikolov, Tomas",
+  editor    = "Burges, C J C and Bottou, L and Welling, M and Ghahramani, Z and
+               Weinberger, K Q",
+  abstract  = "Modern visual recognition systems are often limited in their
+               ability to scale to large numbers of object categories. This
+               limitation is in part due to the increasing difficulty of
+               acquiring sufficient training data in the form of labeled images
+               as the number of object categories grows. One remedy is to
+               leverage data from other sources--such as text data--both to
+               train visual models and to constrain their predictions. In this
+               paper we present a new deep visual- semantic embedding model
+               trained to identify visual objects using both labeled image data
+               …",
+  publisher = "Curran Associates, Inc.",
+  pages     = "2121--2129",
+  year      =  2013
+}
+
+% The entry below contains non-ASCII chars that could not be converted
+% to a LaTeX equivalent.
+@INPROCEEDINGS{ref_evalmetric,
+  title     = "Multimodal convolutional neural networks for matching image and
+               sentence",
+  booktitle = "Proceedings of the {IEEE} international conference on computer
+               vision",
+  author    = "Ma, Lin and Lu, Zhengdong and Shang, Lifeng and Li, Hang",
+  abstract  = "In this paper, we propose multimodal convolutional neural
+               networks (m-CNNs) for matching image and sentence. Our m-CNN
+               provides an end-to-end framework with convolutional
+               architectures to exploit image representation, word composition,
+               and the matching relations between the two modalities. More
+               specifically, it consists of one image CNN encoding the image
+               content and one matching CNN modeling the joint representation
+               of image and sentence. The matching CNN composes different
+               semantic fragments from words and learns …",
+  publisher = "openaccess.thecvf.com",
+  pages     = "2623--2631",
+  year      =  2015
+}
+
+@INPROCEEDINGS{ref_text2image,
+  title      = "Generative Adversarial Text to Image Synthesis",
+  booktitle  = "International Conference on Machine Learning",
+  author     = "Reed, Scott and Akata, Zeynep and Yan, Xinchen and Logeswaran,
+                Lajanugen and Schiele, Bernt and Lee, Honglak",
+  abstract   = "Automatic synthesis of realistic images from text would be
+                interesting and useful, but current AI systems are still far
+                from this goal. However, in recent years generic and powerful
+                recurrent neura...",
+  publisher  = "jmlr.org",
+  pages      = "1060--1069",
+  month      =  jun,
+  year       =  2016,
+  language   = "en",
+  conference = "International Conference on Machine Learning"
+}
+
+@ARTICLE{ref_video_description,
+  title         = "Translating Videos to Natural Language Using Deep Recurrent
+                   Neural Networks",
+  author        = "Venugopalan, Subhashini and Xu, Huijuan and Donahue, Jeff
+                   and Rohrbach, Marcus and Mooney, Raymond and Saenko, Kate",
+  abstract      = "Solving the visual symbol grounding problem has long been a
+                   goal of artificial intelligence. The field appears to be
+                   advancing closer to this goal with recent breakthroughs in
+                   deep learning for natural language grounding in static
+                   images. In this paper, we propose to translate videos
+                   directly to sentences using a unified deep neural network
+                   with both convolutional and recurrent structure. Described
+                   video datasets are scarce, and most existing methods have
+                   been applied to toy domains with a small vocabulary of
+                   possible words. By transferring knowledge from 1.2M+ images
+                   with category labels and 100,000+ images with captions, our
+                   method is able to create sentence descriptions of
+                   open-domain videos with large vocabularies. We compare our
+                   approach with recent work using language generation metrics,
+                   subject, verb, and object prediction accuracy, and a human
+                   evaluation.",
+  month         =  dec,
+  year          =  2014,
+  archivePrefix = "arXiv",
+  primaryClass  = "cs.CV",
+  eprint        = "1412.4729"
+}
+
+% The entry below contains non-ASCII chars that could not be converted
+% to a LaTeX equivalent.
+@INPROCEEDINGS{ref_image_caption,
+  title     = "Show and tell: A neural image caption generator",
+  booktitle = "Proceedings of the {IEEE} conference on computer vision and
+               pattern recognition",
+  author    = "Vinyals, Oriol and Toshev, Alexander and Bengio, Samy and Erhan,
+               Dumitru",
+  abstract  = "Automatically describing the content of an image is a
+               fundamental problem in artificial intelligence that connects
+               computer vision and natural language processing. In this paper,
+               we present a generative model based on a deep recurrent
+               architecture that combines recent advances in computer vision
+               and machine translation and that can be used to generate natural
+               sentences describing an image. The model is trained to maximize
+               the likelihood of the target description sentence given the
+               training image. Experiments on several datasets …",
+  publisher = "cv-foundation.org",
+  pages     = "3156--3164",
+  year      =  2015
+}
+
+@ARTICLE{ref_music_decoder,
+  title         = "A Universal Music Translation Network",
+  author        = "Mor, Noam and Wolf, Lior and Polyak, Adam and Taigman, Yaniv",
+  abstract      = "We present a method for translating music across musical
+                   instruments, genres, and styles. This method is based on a
+                   multi-domain wavenet autoencoder, with a shared encoder and
+                   a disentangled latent space that is trained end-to-end on
+                   waveforms. Employing a diverse training dataset and large
+                   net capacity, the domain-independent encoder allows us to
+                   translate even from musical domains that were not seen
+                   during training. The method is unsupervised and does not
+                   rely on supervision in the form of matched samples between
+                   domains or musical transcriptions. We evaluate our method on
+                   NSynth, as well as on a dataset collected from professional
+                   musicians, and achieve convincing translations, even when
+                   translating from whistling, potentially enabling the
+                   creation of instrumental music by untrained humans.",
+  month         =  may,
+  year          =  2018,
+  archivePrefix = "arXiv",
+  primaryClass  = "cs.SD",
+  eprint        = "1805.07848"
+}
+
+@ARTICLE{ref_visual_question_answ,
+  title         = "Multimodal Compact Bilinear Pooling for Visual Question
+                   Answering and Visual Grounding",
+  author        = "Fukui, Akira and Park, Dong Huk and Yang, Daylen and
+                   Rohrbach, Anna and Darrell, Trevor and Rohrbach, Marcus",
+  abstract      = "Modeling textual or visual information with vector
+                   representations trained from large language or visual
+                   datasets has been successfully explored in recent years.
+                   However, tasks such as visual question answering require
+                   combining these vector representations with each other.
+                   Approaches to multimodal pooling include element-wise
+                   product or sum, as well as concatenation of the visual and
+                   textual representations. We hypothesize that these methods
+                   are not as expressive as an outer product of the visual and
+                   textual vectors. As the outer product is typically
+                   infeasible due to its high dimensionality, we instead
+                   propose utilizing Multimodal Compact Bilinear pooling (MCB)
+                   to efficiently and expressively combine multimodal features.
+                   We extensively evaluate MCB on the visual question answering
+                   and grounding tasks. We consistently show the benefit of MCB
+                   over ablations without MCB. For visual question answering,
+                   we present an architecture which uses MCB twice, once for
+                   predicting attention over spatial features and again to
+                   combine the attended representation with the question
+                   representation. This model outperforms the state-of-the-art
+                   on the Visual7W dataset and the VQA challenge.",
+  month         =  jun,
+  year          =  2016,
+  archivePrefix = "arXiv",
+  primaryClass  = "cs.CV",
+  eprint        = "1606.01847"
+}
+
+@ARTICLE{ref_event_detection,
+  title     = "Video2vec Embeddings Recognize Events When Examples Are Scarce",
+  author    = "Habibian, Amirhossein and Mensink, Thomas and Snoek, Cees G M",
+  abstract  = "This paper aims for event recognition when video examples are
+               scarce or even completely absent. The key in such a challenging
+               setting is a semantic video representation. Rather than building
+               the representation from individual attribute detectors and their
+               annotations, we propose to learn the entire representation from
+               freely available web videos and their descriptions using an
+               embedding between video features and term vectors. In our
+               proposed embedding, which we call Video2vec, the correlations
+               between the words are utilized to learn a more effective
+               representation by optimizing a joint objective balancing
+               descriptiveness and predictability. We show how learning the
+               Video2vec embedding using a multimodal predictability loss,
+               including appearance, motion and audio features, results in a
+               better predictable representation. We also propose an event
+               specific variant of Video2vec to learn a more accurate
+               representation for the words, which are indicative of the event,
+               by introducing a term sensitive descriptiveness loss. Our
+               experiments on three challenging collections of web videos from
+               the NIST TRECVID Multimedia Event Detection and Columbia
+               Consumer Videos datasets demonstrate: i) the advantages of
+               Video2vec over representations using attributes or alternative
+               embeddings, ii) the benefit of fusing video modalities by an
+               embedding over common strategies, iii) the complementarity of
+               term sensitive descriptiveness and multimodal predictability for
+               event recognition. By its ability to improve predictability of
+               present day audio-visual video features, while at the same time
+               maximizing their semantic descriptiveness, Video2vec leads to
+               state-of-the-art accuracy for both few- and zero-example
+               recognition of events in video.",
+  journal   = "IEEE Trans. Pattern Anal. Mach. Intell.",
+  publisher = "ieeexplore.ieee.org",
+  volume    =  39,
+  number    =  10,
+  pages     = "2089--2103",
+  month     =  oct,
+  year      =  2017,
+  language  = "en"
+}
+
+@ARTICLE{ref_video_class,
+  title     = "Exploiting Feature and Class Relationships in Video
+               Categorization with Regularized Deep Neural Networks",
+  author    = "Jiang, Yu-Gang and Wu, Zuxuan and Wang, Jun and Xue, Xiangyang
+               and Chang, Shih-Fu",
+  abstract  = "In this paper, we study the challenging problem of categorizing
+               videos according to high-level semantics such as the existence
+               of a particular human action or a complex event. Although
+               extensive efforts have been devoted in recent years, most
+               existing works combined multiple video features using simple
+               fusion strategies and neglected the utilization of inter-class
+               semantic relationships. This paper proposes a novel unified
+               framework that jointly exploits the feature relationships and
+               the class relationships for improved categorization performance.
+               Specifically, these two types of relationships are estimated and
+               utilized by imposing regularizations in the learning process of
+               a deep neural network (DNN). Through arming the DNN with better
+               capability of harnessing both the feature and the class
+               relationships, the proposed regularized DNN (rDNN) is more
+               suitable for modeling video semantics. We show that rDNN
+               produces better performance over several state-of-the-art
+               approaches. Competitive results are reported on the well-known
+               Hollywood2 and Columbia Consumer Video benchmarks. In addition,
+               to stimulate future research on large scale video
+               categorization, we collect and release a new benchmark dataset,
+               called FCVID, which contains 91,223 Internet videos and 239
+               manually annotated categories.",
+  journal   = "IEEE Trans. Pattern Anal. Mach. Intell.",
+  publisher = "ieeexplore.ieee.org",
+  volume    =  40,
+  number    =  2,
+  pages     = "352--364",
+  month     =  feb,
+  year      =  2018,
+  language  = "en"
+}
+
+@ARTICLE{ref_lstm,
+  title     = "Long short-term memory",
+  author    = "Hochreiter, S and Schmidhuber, J",
+  abstract  = "Learning to store information over extended time intervals by
+               recurrent backpropagation takes a very long time, mostly because
+               of insufficient, decaying error backflow. We briefly review
+               Hochreiter's (1991) analysis of this problem, then address it by
+               introducing a novel, efficient, gradient-based method called
+               long short-term memory (LSTM). Truncating the gradient where
+               this does not do harm, LSTM can learn to bridge minimal time
+               lags in excess of 1000 discrete-time steps by enforcing constant
+               error flow through constant error carousels within special
+               units. Multiplicative gate units learn to open and close access
+               to the constant error flow. LSTM is local in space and time; its
+               computational complexity per time step and weight is O(1). Our
+               experiments with artificial data involve local, distributed,
+               real-valued, and noisy pattern representations. In comparisons
+               with real-time recurrent learning, back propagation through
+               time, recurrent cascade correlation, Elman nets, and neural
+               sequence chunking, LSTM leads to many more successful runs, and
+               learns much faster. LSTM also solves complex, artificial
+               long-time-lag tasks that have never been solved by previous
+               recurrent network algorithms.",
+  journal   = "Neural Comput.",
+  publisher = "MIT Press",
+  volume    =  9,
+  number    =  8,
+  pages     = "1735--1780",
+  month     =  nov,
+  year      =  1997,
+  language  = "en"
+}
+
+% The entry below contains non-ASCII chars that could not be converted
+% to a LaTeX equivalent.
+@INPROCEEDINGS{ref_char_embeddings,
+  title     = "Character-aware neural language models",
+  booktitle = "Thirtieth {AAAI} Conference on Artificial Intelligence",
+  author    = "Kim, Yoon and Jernite, Yacine and Sontag, David and Rush,
+               Alexander M",
+  abstract  = "We describe a simple neural language model that relies only on
+               character-level inputs. Predictions are still made at the
+               word-level. Our model employs a convolutional neural network
+               (CNN) and a highway net work over characters, whose output is
+               given to a long short-term memory (LSTM) recurrent neural
+               network language model (RNN-LM). On the English Penn Treebank
+               the model is on par with the existing state-of-the-art despite
+               having 60\% fewer parameters. On languages with rich morphology
+               (Arabic, Czech, French …",
+  publisher = "aaai.org",
+  year      =  2016
+}
+
+% The entry below contains non-ASCII chars that could not be converted
+% to a LaTeX equivalent.
+@INPROCEEDINGS{ref_glove,
+  title     = "Glove: Global vectors for word representation",
+  booktitle = "Proceedings of the 2014 conference on empirical methods in
+               natural language processing ({EMNLP})",
+  author    = "Pennington, Jeffrey and Socher, Richard and Manning, Christopher",
+  abstract  = "Recent methods for learning vector space representations of
+               words have succeeded in capturing fine-grained semantic and
+               syntactic regularities using vector arithmetic, but the origin
+               of these regularities has remained opaque. We analyze and make
+               explicit the model properties needed for such regularities to
+               emerge in word vectors. The result is a new global logbilinear
+               regression model that combines the advantages of the two major
+               model families in the literature: global matrix factorization
+               and local context window methods. Our model …",
+  publisher = "aclweb.org",
+  pages     = "1532--1543",
+  year      =  2014
+}
+
+@ARTICLE{ref_word2vec,
+  title         = "Efficient Estimation of Word Representations in Vector Space",
+  author        = "Mikolov, Tomas and Chen, Kai and Corrado, Greg and Dean,
+                   Jeffrey",
+  abstract      = "We propose two novel model architectures for computing
+                   continuous vector representations of words from very large
+                   data sets. The quality of these representations is measured
+                   in a word similarity task, and the results are compared to
+                   the previously best performing techniques based on different
+                   types of neural networks. We observe large improvements in
+                   accuracy at much lower computational cost, i.e. it takes
+                   less than a day to learn high quality word vectors from a
+                   1.6 billion words data set. Furthermore, we show that these
+                   vectors provide state-of-the-art performance on our test set
+                   for measuring syntactic and semantic word similarities.",
+  month         =  jan,
+  year          =  2013,
+  archivePrefix = "arXiv",
+  primaryClass  = "cs.CL",
+  eprint        = "1301.3781"
+}
+
+% The entry below contains non-ASCII chars that could not be converted
+% to a LaTeX equivalent.
+@INPROCEEDINGS{ref_cross_modal_hash,
+  title     = "Deep cross-modal hashing",
+  booktitle = "Proceedings of the {IEEE} conference on computer vision and
+               pattern recognition",
+  author    = "Jiang, Qing-Yuan and Li, Wu-Jun",
+  abstract  = "Due to its low storage cost and fast query speed, cross-modal
+               hashing (CMH) has been widely used for similarity search in
+               multimedia retrieval applications. However, most existing CMH
+               methods are based on hand-crafted features which might not be
+               optimally compatible with the hash-code learning procedure. As a
+               result, existing CMH methods with hand-crafted features may not
+               achieve satisfactory performance. In this paper, we propose a
+               novel CMH method, called deep cross-modal hashing (DCMH), by
+               integrating feature learning and hash …",
+  publisher = "openaccess.thecvf.com",
+  pages     = "3232--3240",
+  year      =  2017
+}
+
+% The entry below contains non-ASCII chars that could not be converted
+% to a LaTeX equivalent.
+@INPROCEEDINGS{ref_ResNet,
+  title     = "Deep residual learning for image recognition",
+  booktitle = "Proceedings of the {IEEE} conference on computer vision and
+               pattern recognition",
+  author    = "He, Kaiming and Zhang, Xiangyu and Ren, Shaoqing and Sun, Jian",
+  abstract  = "Deeper neural networks are more difficult to train. We present a
+               residual learning framework to ease the training of networks
+               that are substantially deeper than those used previously. We
+               explicitly reformulate the layers as learning residual functions
+               with reference to the layer inputs, instead of learning
+               unreferenced functions. We provide comprehensive empirical
+               evidence showing that these residual networks are easier to
+               optimize, and can gain accuracy from considerably increased
+               depth. On the ImageNet dataset we evaluate residual …",
+  publisher = "openaccess.thecvf.com",
+  pages     = "770--778",
+  year      =  2016
+}
+
+@ARTICLE{ref_VGGNet,
+  title         = "Very Deep Convolutional Networks for {Large-Scale} Image
+                   Recognition",
+  author        = "Simonyan, Karen and Zisserman, Andrew",
+  abstract      = "In this work we investigate the effect of the convolutional
+                   network depth on its accuracy in the large-scale image
+                   recognition setting. Our main contribution is a thorough
+                   evaluation of networks of increasing depth using an
+                   architecture with very small (3x3) convolution filters,
+                   which shows that a significant improvement on the prior-art
+                   configurations can be achieved by pushing the depth to 16-19
+                   weight layers. These findings were the basis of our ImageNet
+                   Challenge 2014 submission, where our team secured the first
+                   and the second places in the localisation and classification
+                   tracks respectively. We also show that our representations
+                   generalise well to other datasets, where they achieve
+                   state-of-the-art results. We have made our two
+                   best-performing ConvNet models publicly available to
+                   facilitate further research on the use of deep visual
+                   representations in computer vision.",
+  month         =  sep,
+  year          =  2014,
+  archivePrefix = "arXiv",
+  primaryClass  = "cs.CV",
+  eprint        = "1409.1556"
+}
+
+% The entry below contains non-ASCII chars that could not be converted
+% to a LaTeX equivalent.
+@INCOLLECTION{ref_AlexNet,
+  title     = "{ImageNet} Classification with Deep Convolutional Neural
+               Networks",
+  booktitle = "Advances in Neural Information Processing Systems 25",
+  author    = "Krizhevsky, Alex and Sutskever, Ilya and Hinton, Geoffrey E",
+  editor    = "Pereira, F and Burges, C J C and Bottou, L and Weinberger, K Q",
+  abstract  = "We trained a large, deep convolutional neural network to
+               classify the 1.3 million high- resolution images in the
+               LSVRC-2010 ImageNet training set into the 1000 different
+               classes. On the test data, we achieved top-1 and top-5 error
+               rates of 39.7\% and 18.9\% which is considerably better than the
+               previous state-of-the-art results. The neural network, which has
+               60 million parameters and 500,000 neurons, consists of five
+               convolutional layers, some of which are followed by max-pooling
+               layers, and two globally connected layers with a final …",
+  publisher = "Curran Associates, Inc.",
+  pages     = "1097--1105",
+  year      =  2012
+}
+
+% The entry below contains non-ASCII chars that could not be converted
+% to a LaTeX equivalent.
+@INPROCEEDINGS{ref_flickr,
+  title     = "Flickr30k entities: Collecting region-to-phrase correspondences
+               for richer image-to-sentence models",
+  booktitle = "Proceedings of the {IEEE} international conference on computer
+               vision",
+  author    = "Plummer, Bryan A and Wang, Liwei and Cervantes, Chris M and
+               Caicedo, Juan C and Hockenmaier, Julia and Lazebnik, Svetlana",
+  abstract  = "The Flickr30k dataset has become a standard benchmark for
+               sentence-based image description. This paper presents Flickr30k
+               Entities, which augments the 158k captions from Flickr30k with
+               244k coreference chains linking mentions of the same entities in
+               images, as well as 276k manually annotated bounding boxes
+               corresponding to each entity. Such annotation is essential for
+               continued progress in automatic image description and grounded
+               language understanding. We present experiments demonstrating the
+               usefulness of our …",
+  publisher = "openaccess.thecvf.com",
+  pages     = "2641--2649",
+  year      =  2015
+}
+
+% The entry below contains non-ASCII chars that could not be converted
+% to a LaTeX equivalent.
+@INPROCEEDINGS{ref_dual_encoding,
+  title     = "Dual Encoding for {Zero-Example} Video Retrieval",
+  booktitle = "Proceedings of the {IEEE} Conference on Computer Vision and
+               Pattern Recognition",
+  author    = "Dong, Jianfeng and Li, Xirong and Xu, Chaoxi and Ji, Shouling
+               and He, Yuan and Yang, Gang and Wang, Xun",
+  abstract  = "This paper attacks the challenging problem of zero-example video
+               retrieval. In such a retrieval paradigm, an end user searches
+               for unlabeled videos by ad-hoc queries described in natural
+               language text with no visual example provided. Given videos as
+               sequences of frames and queries as sequences of words, an
+               effective sequence-to-sequence cross-modal matching is required.
+               The majority of existing methods are concept based, extracting
+               relevant concepts from queries and videos and accordingly
+               establishing associations …",
+  publisher = "openaccess.thecvf.com",
+  pages     = "9346--9355",
+  year      =  2019
+}
+
+@ARTICLE{ref_w2vv,
+  title     = "Predicting Visual Features From Text for Image and Video Caption
+               Retrieval",
+  author    = "Dong, J and Li, X and Snoek, C G M",
+  abstract  = "This paper strives to find amidst a set of sentences the one
+               best describing the content of a given image or video. Different
+               from existing works, which rely on a joint subspace for their
+               image and video caption retrieval, we propose to do so in a
+               visual space exclusively. Apart from this conceptual novelty, we
+               contribute Word2VisualVec , a deep neural network architecture
+               that learns to predict a visual feature representation from
+               textual input. Example captions are encoded into a textual
+               embedding based on multiscale sentence vectorization and further
+               transferred into a deep visual feature of choice via a simple
+               multilayer perceptron. We further generalize Word2VisualVec for
+               video caption retrieval, by predicting from text both
+               three-dimensional convolutional neural network features as well
+               as a visual-audio representation. Experiments on Flickr8k,
+               Flickr30k, the Microsoft Video Description dataset, and the very
+               recent NIST TrecVid challenge for video caption retrieval detail
+               Word2VisualVec's properties, its benefit over textual
+               embeddings, the potential for multimodal query composition, and
+               its state-of-the-art results.",
+  journal   = "IEEE Trans. Multimedia",
+  publisher = "ieeexplore.ieee.org",
+  volume    =  20,
+  number    =  12,
+  pages     = "3377--3388",
+  month     =  dec,
+  year      =  2018,
+  keywords  = "convolution;feature extraction;image annotation;image
+               representation;learning (artificial intelligence);multilayer
+               perceptrons;text analysis;video retrieval;video signal
+               processing;video caption retrieval;visual space;deep neural
+               network architecture;visual feature representation;textual
+               embedding;three-dimensional convolutional neural network
+               features;visual-audio representation;Microsoft Video Description
+               dataset;NIST TrecVid;multilayer perceptron;multimodal query
+               composition;Word2VisualVecs properties;Visualization;Feature
+               extraction;Natural languages;Convolutional neural
+               networks;Machine learning;Encoding;Image and video caption
+               retrieval"
+}
+
+% The entry below contains non-ASCII chars that could not be converted
+% to a LaTeX equivalent.
+@ARTICLE{ref_survey_2015,
+  title     = "A review and meta-analysis of multimodal affect detection
+               systems",
+  author    = "D'mello, S K and Kory, J",
+  abstract  = "Affect detection is an important pattern recognition problem
+               that has inspired researchers from several areas. The field is
+               in need of a systematic review due to the recent influx of
+               Multimodal (MM) affect detection systems that differ in several
+               respects and sometimes yield incompatible results. This article
+               provides such a survey via a quantitative review and meta-
+               analysis of 90 peer-reviewed MM systems. The review indicated
+               that the state of the art mainly consists of person-dependent
+               models (62.2\% of systems) that fuse audio and visual …",
+  journal   = "ACM Computing Surveys (CSUR)",
+  publisher = "dl.acm.org",
+  year      =  2015
+}
+
+@MISC{ref_wiki_commons,
+  title        = "Wikimedia Commons",
+  booktitle    = "Wikimedia Foundation, Inc.",
+  author       = "{Wikimedia Foundation, Inc.}",
+  month        =  sep,
+  year         =  2004,
+  howpublished = "\url{https://commons.wikimedia.org/wiki/Main_Page}",
+  note         = "Accessed: 2019-12-29"
+}
+
+@ARTICLE{ref_survey_baltrusaitis,
+  title     = "Multimodal Machine Learning: A Survey and Taxonomy",
+  author    = "Baltru{\v s}aitis, T and Ahuja, C and Morency, L",
+  abstract  = "Our experience of the world is multimodal - we see objects, hear
+               sounds, feel texture, smell odors, and taste flavors. Modality
+               refers to the way in which something happens or is experienced
+               and a research problem is characterized as multimodal when it
+               includes multiple such modalities. In order for Artificial
+               Intelligence to make progress in understanding the world around
+               us, it needs to be able to interpret such multimodal signals
+               together. Multimodal machine learning aims to build models that
+               can process and relate information from multiple modalities. It
+               is a vibrant multi-disciplinary field of increasing importance
+               and with extraordinary potential. Instead of focusing on
+               specific multimodal applications, this paper surveys the recent
+               advances in multimodal machine learning itself and presents them
+               in a common taxonomy. We go beyond the typical early and late
+               fusion categorization and identify broader challenges that are
+               faced by multimodal machine learning, namely: representation,
+               translation, alignment, fusion, and co-learning. This new
+               taxonomy will enable researchers to better understand the state
+               of the field and identify directions for future research.",
+  journal   = "IEEE Trans. Pattern Anal. Mach. Intell.",
+  publisher = "ieeexplore.ieee.org",
+  volume    =  41,
+  number    =  2,
+  pages     = "423--443",
+  month     =  feb,
+  year      =  2019,
+  keywords  = "artificial intelligence;learning (artificial
+               intelligence);signal processing;user interfaces;multimodal
+               signals;specific multimodal applications;vibrant
+               multidisciplinary field;multimodal machine learning;Speech
+               recognition;Visualization;Media;Speech;Multimedia
+               communication;Streaming media;Hidden Markov
+               models;Multimodal;machine learning;introductory;survey"
+}
+
+% The entry below contains non-ASCII chars that could not be converted
+% to a LaTeX equivalent.
+@ARTICLE{ref_human_voice_recognition,
+  title     = "Hearing lips and seeing voices",
+  author    = "McGurk, H and MacDonald, J",
+  abstract  = "MOST verbal communication occurs in contexts where the listener
+               can see the speaker as well as hear him. However, speech
+               perception is normally regarded as a purely auditory process.
+               The study reported here demonstrates a previously unrecognised
+               influence of vision upon speech perception. It stems from an
+               observation that, on being shown a film of a young woman's
+               talking head, in which repeated utterances of the syllable [ba]
+               had been dubbed on to lip movements for [ga], normal adults
+               reported hearing [da]. With the reverse …",
+  journal   = "Nature",
+  publisher = "nature.com",
+  volume    =  264,
+  number    =  5588,
+  pages     = "746--748",
+  year      =  1976,
+  language  = "en"
+}
+
+@ARTICLE{ref_survey,
+  title     = "Deep Multimodal Representation Learning: A Survey",
+  author    = "Guo, W and Wang, J and Wang, S",
+  abstract  = "Multimodal representation learning, which aims to narrow the
+               heterogeneity gap among different modalities, plays an
+               indispensable role in the utilization of ubiquitous multimodal
+               data. Due to the powerful representation ability with multiple
+               levels of abstraction, deep learning-based multimodal
+               representation learning has attracted much attention in recent
+               years. In this paper, we provided a comprehensive survey on deep
+               multimodal representation learning which has never been
+               concentrated entirely. To facilitate the discussion on how the
+               heterogeneity gap is narrowed, according to the underlying
+               structures in which different modalities are integrated, we
+               category deep multimodal representation learning methods into
+               three frameworks: joint representation, coordinated
+               representation, and encoder-decoder. Additionally, we review
+               some typical models in this area ranging from conventional
+               models to newly developed technologies. This paper highlights on
+               the key issues of newly developed technologies, such as
+               encoder-decoder model, generative adversarial networks, and
+               attention mechanism in a multimodal representation learning
+               perspective, which, to the best of our knowledge, have never
+               been reviewed previously, even though they have become the major
+               focuses of much contemporary research. For each framework or
+               model, we discuss its basic structure, learning objective,
+               application scenes, key issues, advantages, and disadvantages,
+               such that both novel and experienced researchers can benefit
+               from this survey. Finally, we suggest some important directions
+               for future work.",
+  journal   = "IEEE Access",
+  publisher = "ieeexplore.ieee.org",
+  volume    =  7,
+  pages     = "63373--63394",
+  year      =  2019,
+  keywords  = "learning (artificial intelligence);ubiquitous multimodal
+               data;deep learning-based multimodal representation learning;deep
+               multimodal representation learning;heterogeneity gap;coordinated
+               representation;modalities;joint representation;encoder-decoder
+               model;Semantics;Feature extraction;Deep learning;Task
+               analysis;Speech recognition;Data mining;Decoding;Multimodal
+               representation learning;multimodal deep learning;deep multimodal
+               fusion;multimodal translation;multimodal adversarial learning"
+}

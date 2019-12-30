@@ -1,0 +1,21 @@
+\chapter{Problem Approach}
+\section{Architecture}
+After rigor overview of related work, Coordinated Representation techniques were identified as the most prominent direction for our problem. Coordinated Representation approach aims to exploit modality-specific features fully, thus we train each feature modality separately.
+% TODO: for our solution? (not problem)
+
+To make the system learn right features in each modality, we map all of them into space where inter-modality similarity can be evaluated but also preserving the intra-modality similarity structure\cite{ref_cross_modal_hash, ref_devise, ref_kiros}. Then we identify loss function, by enforcing ranking function (\ref{eq_rank_loss}) in that space to return high values for mismatches modality pairs and small otherwise. That would be a loss function, which each modality-specific model will be minimizing, thus empowering modality-specific feature learning. You can see visualisation of this idea on Figure \ref{fig2}.
+
+We will focus on integrating recent Word2VisualVec\cite{ref_w2vv} and dual encoding\cite{ref_dual_encoding} models to our more broader and more realistic problem settings. They showed impressive results but were evaluated on more narrow problem. More specifically, they were working with Flickr dataset\cite{ref_flickr} where one image corresponds to 5 descriptive sentences. In our settings we have one article corresponding to multiple images, where all of them having additional metadata such as category, name, description.
+
+This paper is supported by Github repository\footnote{\url{https://github.com/OlehOnyshchak/WikiImageRecommendation}} with all experiments
+
+\section{Methodology}
+\subsection{Methodological Approach}
+The hypothesis under test is: "it is possible to implement a model to recommend relevant Commons\cite{ref_wiki_commons} images for a specific Wikipedia article using multimodal learning techniques" and implies Quantitative research. It is aiming to discover whether state-of-the-art techniques of multimodal representation learning can solve this specific problem for Wikipedia with not worse precision. 
+
+\subsection{Methods of Data Collection}
+Existing Wikipedia data will be used to conduct the research. More specifically, we will use a collection of featured articles\footnote{\url{https://en.wikipedia.org/wiki/Wikipedia:Featured_articles}}, where each page went through thorough manual review procedure by the Wikipedia community and represent the best Wikipedia can offer. Thus it is theoretically the best possible quality for machine learning algorithms.
+
+\subsection{Methods of Analysis}
+We will select candidate algorithms by analyzing recent literature surveys of a corresponding domain, and choosing the most prominent state-of-the-art approaches described there. We will also check the most cited approaches to solve a similar problem. In that way, we can ensure that all state-of-the-art methods existing in that field would be reviewed and then the most applicable would be adequately tested.
+\endinput
