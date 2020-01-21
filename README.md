@@ -6,6 +6,6 @@ In this paper, we propose to research whether state-of-the-art techniques of mul
 ## Data
 Dataset was collected from Wikipedia and uploaded to [Kaggle](https://www.kaggle.com/jacksoncrow/wiki-articles-multimodal). For more details about dataset collection and structure, please refer to its description on Kaggle.
 ## More Details
-You can find more details about problem statement and our solution approach in our [Project Proposal](https://github.com/OlehOnyshchak/WikiImageRecommendation/blob/master/Papers/Project_Proposal/paper.pdf).
+You can find more details about problem statement and our solution approach in our [thesis](http://dx.doi.org/10.13140/RG.2.2.17463.27042).
 ## Acknowledgments
 Special thanks to [Miriam Redi](http://www.visionresearchwitch.com/) for actively mentoring me in this project.
