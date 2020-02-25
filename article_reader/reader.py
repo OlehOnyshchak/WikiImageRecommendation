@@ -6,6 +6,7 @@ import mwparserfromhell as mwp
 import hashlib
 import urllib
 import re
+import shutil
 from urllib.request import urlretrieve
 from html.parser import HTMLParser
 from html.entities import name2codepoint
@@ -55,14 +56,14 @@ def _getJSON(path):
     with open(path) as json_file:
         return json.loads(json.load(json_file))
 
-def get_path(out_dir, create_if_not_exists):
+def _get_path(out_dir, create_if_not_exists):
     requests_path = Path(out_dir)
     if not requests_path.exists() and create_if_not_exists:
         requests_path.mkdir(parents=True)
       
     return requests_path
 
-def get_url(img_name, size=600):
+def _get_url(img_name, size=600):
     # onyshchak: img.oldest_file_info.url might have the same information
     url_prefix = "https://upload.wikimedia.org/wikipedia/commons/thumb/"
     md5 = hashlib.md5(img_name.encode('utf-8')).hexdigest()
@@ -75,14 +76,12 @@ def get_url(img_name, size=600):
         
     return url
 
-def get_description(img):
-    html = img.getImagePageHtml()
-    
+def _get_description(img):
     parser = _MyHTMLParser()
     parser.feed(img.getImagePageHtml())
     return parser.get_description().replace("\n", "")
 
-def get_img_path(img, img_dir):
+def _get_img_path(img, img_dir):
     img_name = img.title(as_filename=True, with_ns=False).replace("\"", "")
     img_name_valid = hashlib.md5(img_name.encode('utf-8')).hexdigest()  
     img_path = img_dir / (img_name_valid + ".jpg")
@@ -94,7 +93,7 @@ def get_img_path(img, img_dir):
         
     return img_name, img_path, img_path_orig
 
-def valid_img_type(img_name):
+def _valid_img_type(img_name):
     # onyshchak: exclude .svg since most of it is icons. Althouh, should do better filtering
     valid_types = [
         '.tif', '.tiff', '.jpg', '.jpeg', '.jpe', '.jif,', '.jfif', '.jfi',  '.gif', '.png'
@@ -104,10 +103,10 @@ def valid_img_type(img_name):
             return True
     return False
 
-def single_img_download(img, img_dir):
-    img_name, img_path, img_path_orig = get_img_path(img, img_dir)
-    if not valid_img_type(img_name):
-        skipped_svg.add(get_url(img_name))
+def _single_img_download(img, img_dir):
+    img_name, img_path, img_path_orig = _get_img_path(img, img_dir)
+    if not _valid_img_type(img_name):
+        skipped_svg.add(_get_url(img_name))
         if img_path.exists():
             img_path.unlink()
                 
@@ -121,18 +120,18 @@ def single_img_download(img, img_dir):
     
     try:
         # TODO: remove & char from filenames before uploading to Kaggle
-        urlretrieve(get_url(img_name), img_path)
+        urlretrieve(_get_url(img_name), img_path)
         return (True, img_path.name) 
     except Exception as e:
         print(str(e))
         img.download(filename=img_path_orig, chunk_size=8*1024)
         return (True, img_path_orig.name)
     
-def remove_obsolete_imgs(img_dir, img_links):
-    uptodate_imgs = [get_img_path(img, img_dir) for img in img_links]
+def _remove_obsolete_imgs(img_dir, img_links):
+    uptodate_imgs = [_get_img_path(img, img_dir) for img in img_links]
     img_names = (
-        [x[1].name for x in uptodate_imgs if valid_img_type(x[0])] +
-        [x[2].name for x in uptodate_imgs if valid_img_type(x[0])]
+        [x[1].name for x in uptodate_imgs if _valid_img_type(x[0])] +
+        [x[2].name for x in uptodate_imgs if _valid_img_type(x[0])]
     )
     
     files = [img_dir/f for f in listdir(img_dir) if isfile(join(img_dir, f))]
@@ -158,31 +157,31 @@ def remove_obsolete_imgs(img_dir, img_links):
         meta_json = json.dumps({"img_meta": uptodate_meta})
         _dump(meta_path, meta_json)
         
-def is_meta_outdated(meta_path, img_links):
+def _is_meta_outdated(meta_path, img_links):
     if not meta_path.exists():
         return True
     
     meta = _getJSON(meta_path)['img_meta']
     meta_titles = [x['title'] for x in meta]
-    current_titles = [x.title(with_ns=False) for x in img_links if valid_img_type(x.title(with_ns=False))]
+    current_titles = [x.title(with_ns=False) for x in img_links if _valid_img_type(x.title(with_ns=False))]
     
     res = sorted(meta_titles) != sorted(current_titles)
     if res: print("OUTDATED META",  meta_path)
     return res
     
 
-def img_download(img_links, page_dir, invalidate_img_cache, tc, uc):
+def _img_download(img_links, page_dir, invalidate_img_cache, tc, uc):
     if invalidate_img_cache:
         shutil.rmtree(page_dir/"img", ignore_errors=True)
         
-    img_dir = get_path(page_dir/"img", create_if_not_exists=True)
+    img_dir = _get_path(page_dir/"img", create_if_not_exists=True)
     meta_path = img_dir / 'meta.json'
-    remove_obsolete_imgs(img_dir, img_links)
+    _remove_obsolete_imgs(img_dir, img_links)
     
-    download_meta = is_meta_outdated(meta_path, img_links)
+    download_meta = _is_meta_outdated(meta_path, img_links)
     meta = []
     for img in img_links:
-        downloaded, filename = single_img_download(img, img_dir)
+        downloaded, filename = _single_img_download(img, img_dir)
         if downloaded: 
             tc += 1
             
@@ -190,7 +189,7 @@ def img_download(img_links, page_dir, invalidate_img_cache, tc, uc):
             meta.append({
                 "filename": filename,
                 "title": img.title(with_ns=False),
-                "description": get_description(img),
+                "description": _get_description(img),
                 "url": img.full_url(),
             })
           
@@ -200,46 +199,7 @@ def img_download(img_links, page_dir, invalidate_img_cache, tc, uc):
     
     return (tc, uc)
 
-# onyshchak: TODO - add 'on_commons' flag to meta + exreact features from all ORIGINAL files
-def update_meta_description(filename, out_dir, offset=0, limit=None):
-    site = pywikibot.Site()    
-    pages = list(pagegenerators.TextfilePageGenerator(filename=filename, site=site))
-    limit = limit if limit else len(pages) - offset
-    
-    for i in range(offset, offset + limit):
-        p = pages[i]
-        if p.pageid == 0:
-            print("ERROR: Cannot fetch the page " + p.title())
-            continue
-        
-        page_dir = get_path(out_dir + p.title(as_filename=True).rstrip('.'), create_if_not_exists=False)
-        if not page_dir.exists():
-            print('not page_dir.exists()', page_dir)
-            continue  # onyshchak: temporary switch to enrich only existing data
-            
-        print(i, p.title())
-        img_dir = get_path(page_dir/"img", create_if_not_exists=False)
-        meta_path = img_dir / 'meta.json'
-        meta = _getJSON(meta_path)
-        
-        updated = False
-        for img in p.imagelinks():
-            if not valid_img_type(img.title(with_ns=False)):
-                continue
-            
-            i = next(i for i,x in enumerate(meta['img_meta']) if x['title'] == img.title(with_ns=False))
-            updated_description = get_description(img)
-            if updated_description != meta['img_meta'][i]['description']:
-                updated = True
-                meta['img_meta'][i]['description'] = get_description(img)
-                print("DESCRIPTION", img_dir/meta['img_meta'][i]['filename'])
-            
-        if updated:
-            meta_json = json.dumps(meta)
-            _dump(meta_path, meta_json)
-    
-
-def file_log(coll, filename):
+def _file_log(coll, filename):
     with open(filename, 'w') as f:
         for item in coll:
             f.write("%s\n" % item)
@@ -278,7 +238,7 @@ def query(filename: str, params: QueryParams) -> None:
             continue
             
         # onyshchak: create_if_not_exists - switch to enrich only existing data
-        page_dir = get_path(
+        page_dir = _get_path(
             out_dir = params.out_dir + p.title(as_filename=True).rstrip('.'),
             create_if_not_exists = not params.only_update_cached_pages
         )
@@ -306,7 +266,45 @@ def query(filename: str, params: QueryParams) -> None:
             _dump(text_path, page_json)
             
         # downloading page images
-        tc, uc = img_download(p.imagelinks(), page_dir, params.invalidate_img_cache, tc, uc)           
+        tc, uc = _img_download(p.imagelinks(), page_dir, params.invalidate_img_cache, tc, uc)           
             
     print('Downloaded {} images, where {} of them unavailable from commons'.format(tc, uc))
-    file_log(skipped_svg, 'logs/skipped_svg_{}.txt'.format(params.offset))
+    _file_log(skipped_svg, 'logs/skipped_svg_{}.txt'.format(params.offset))
+
+# onyshchak: TODO - add 'on_commons' flag to meta + exreact features from all ORIGINAL files
+def update_meta_description(filename, out_dir, offset=0, limit=None):
+    site = pywikibot.Site()    
+    pages = list(pagegenerators.TextfilePageGenerator(filename=filename, site=site))
+    limit = limit if limit else len(pages) - offset
+    
+    for i in range(offset, offset + limit):
+        p = pages[i]
+        if p.pageid == 0:
+            print("ERROR: Cannot fetch the page " + p.title())
+            continue
+        
+        page_dir = _get_path(out_dir + p.title(as_filename=True).rstrip('.'), create_if_not_exists=False)
+        if not page_dir.exists():
+            print('not page_dir.exists()', page_dir)
+            continue  # onyshchak: temporary switch to enrich only existing data
+            
+        print(i, p.title())
+        img_dir = _get_path(page_dir/"img", create_if_not_exists=False)
+        meta_path = img_dir / 'meta.json'
+        meta = _getJSON(meta_path)
+        
+        updated = False
+        for img in p.imagelinks():
+            if not _valid_img_type(img.title(with_ns=False)):
+                continue
+            
+            i = next(i for i,x in enumerate(meta['img_meta']) if x['title'] == img.title(with_ns=False))
+            updated_description = _get_description(img)
+            if updated_description != meta['img_meta'][i]['description']:
+                updated = True
+                meta['img_meta'][i]['description'] = _get_description(img)
+                print("DESCRIPTION", img_dir/meta['img_meta'][i]['filename'])
+            
+        if updated:
+            meta_json = json.dumps(meta)
+            _dump(meta_path, meta_json)
