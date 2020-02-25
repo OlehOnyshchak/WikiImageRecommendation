@@ -42,9 +42,10 @@ class _MyHTMLParser(HTMLParser):
         return self._description
     
 
-def _clean(wiki_text):
-    wikicode = mwp.parse(wiki_text)
-    return wikicode.strip_code()
+# onyshchak todo: move text cleaning to dataset preprocessing part 
+# def _clean(wiki_text):
+#     wikicode = mwp.parse(wiki_text)
+#     return wikicode.strip_code()
 
 def _dump(path, data):
     with open(path, 'w', encoding='utf8') as outfile:
@@ -53,12 +54,6 @@ def _dump(path, data):
 def _getJSON(path):
     with open(path) as json_file:
         return json.loads(json.load(json_file))
-    
-def query_size(filename):
-    site = pywikibot.Site()
-    pages = list(pagegenerators.TextfilePageGenerator(filename=filename, site=site))
-    
-    return len(pages)
 
 def get_path(out_dir, create_if_not_exists):
     requests_path = Path(out_dir)
@@ -93,7 +88,7 @@ def get_img_path(img, img_dir):
     img_path = img_dir / (img_name_valid + ".jpg")
     
     img_path_orig = Path(str(img_path) + "_" + img_name + ".ORIGINAL")
-    if len(str(img_path_orig)) >= 260:
+    if len(str(img_path_orig).encode('utf-8')) >= 260:
         # pathlib doesn't support Win long path =(
         img_path_orig = Path(str(img_path) + "_" + Path(img_name).suffix + ".ORIGINAL")
         
@@ -248,6 +243,10 @@ def file_log(coll, filename):
     with open(filename, 'w') as f:
         for item in coll:
             f.write("%s\n" % item)
+            
+#########################################################################################################
+# Public Interface
+#########################################################################################################
 
 @dataclass
 class QueryParams:
@@ -256,6 +255,14 @@ class QueryParams:
     offset: int = 0
     limit: Optional[int] = None
     invalidate_img_cache: bool = False
+    invalidate_text_cache: bool = False
+    only_update_cached_pages: bool = False
+        
+def query_size(filename: str):
+    site = pywikibot.Site()
+    pages = list(pagegenerators.TextfilePageGenerator(filename=filename, site=site))
+    
+    return len(pages)
 
 def query(filename: str, params: QueryParams) -> None:   
     site = pywikibot.Site()    
@@ -270,20 +277,30 @@ def query(filename: str, params: QueryParams) -> None:
             print("ERROR: Cannot fetch the page " + p.title())
             continue
             
-        # onyshchak: set to True
-        page_dir = get_path(params.out_dir + p.title(as_filename=True).rstrip('.'), create_if_not_exists=False)
-        if not page_dir.exists():
-            continue  # onyshchak: temporary switch to enrich only existing data
+        # onyshchak: create_if_not_exists - switch to enrich only existing data
+        page_dir = get_path(
+            out_dir = params.out_dir + p.title(as_filename=True).rstrip('.'),
+            create_if_not_exists = not params.only_update_cached_pages
+        )
         
-        if params.debug_info: print(i, page_dir)
+        if not page_dir.exists():
+            continue 
+        
+        if params.debug_info: print(i, page_dir)    
+        should_download_article = lambda path: (
+            not path.exists() or
+            stat(path).st_size == 0 or
+            params.invalidate_text_cache
+        )
+        
         text_path = page_dir / 'text.json'
-        if not text_path.exists() or stat(text_path).st_size == 0:
+        if should_download_article(text_path):
             if params.debug_info: print("Downloading text.json")
             page_json = json.dumps({
                 "title": p.title(),
                 "id": p.pageid,
                 "url": p.full_url(),
-                "text": _clean(p.text),
+                "text": p.text,
             })
             
             _dump(text_path, page_json)
