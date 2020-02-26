@@ -204,6 +204,10 @@ def _file_log(coll, filename):
         for item in coll:
             f.write("%s\n" % item)
             
+def _validated_limit(limit, offset, list_len):
+    res = limit if limit else list_len - offset
+    return min(res, list_len - offset)
+            
 #########################################################################################################
 # Public Interface
 #########################################################################################################
@@ -227,7 +231,7 @@ def query_size(filename: str):
 def query(filename: str, params: QueryParams) -> None:   
     site = pywikibot.Site()    
     pages = list(pagegenerators.TextfilePageGenerator(filename=filename, site=site))
-    limit = params.limit if params.limit else len(pages) - params.offset
+    limit = _validated_limit(params.limit, params.offset, len(pages))
     
     print('Downloading... offset={}, limit={}'.format(params.offset, limit))
     tc, uc = 0, 0
@@ -275,7 +279,7 @@ def query(filename: str, params: QueryParams) -> None:
 def update_meta_description(filename, out_dir, offset=0, limit=None):
     site = pywikibot.Site()    
     pages = list(pagegenerators.TextfilePageGenerator(filename=filename, site=site))
-    limit = limit if limit else len(pages) - offset
+    limit = _validated_limit(limit, offset, len(article_paths))
     
     for i in range(offset, offset + limit):
         p = pages[i]
