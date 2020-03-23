@@ -1,12 +1,14 @@
-from pathlib import Path
 import pywikibot
-from pywikibot import pagegenerators
 import json
 import mwparserfromhell as mwp
 import hashlib
 import urllib
 import re
 import shutil
+import time
+
+from pathlib import Path
+from pywikibot import pagegenerators
 from urllib.request import urlretrieve
 from html.parser import HTMLParser
 from html.entities import name2codepoint
@@ -14,7 +16,13 @@ from os import listdir, stat
 from os.path import isfile, join
 from dataclasses import dataclass
 from typing import Optional
+from selenium import webdriver
+from selenium.webdriver.firefox.options import Options
+from urllib.parse import unquote
 
+# for fetch_meta_captions_fast
+import urllib.request
+from bs4 import BeautifulSoup
 
 skipped_svg = set()
 
@@ -94,6 +102,10 @@ def _get_img_path(img, img_dir):
     return img_name, img_path, img_path_orig
 
 def _valid_img_type(img_name):
+#     aux_files = ['Red Pencil Icon.png']
+#     if img_name in aux_files:
+#         return False
+    
     # onyshchak: exclude .svg since most of it is icons. Althouh, should do better filtering
     valid_types = [
         '.tif', '.tiff', '.jpg', '.jpeg', '.jpe', '.jif,', '.jfif', '.jfi',  '.gif', '.png'
@@ -207,6 +219,29 @@ def _file_log(coll, filename):
 def _validated_limit(limit, offset, list_len):
     res = limit if limit else list_len - offset
     return min(res, list_len - offset)
+
+def _remove_prefix(text, prefix):
+    if text.startswith(prefix):
+        return text[len(prefix):]
+    return text
+
+def _get_image_captions(page_url):
+    response = urllib.request.urlopen(page_url)
+    page_html = response.read()
+        
+    res = []
+    soup = BeautifulSoup(page_html, 'html.parser')
+    for div in soup.findAll("div", {"class": "thumbcaption"}):
+        offset = len('/wiki/')
+        referenced_image = div.find("a", {"class": "internal"})
+        if not referenced_image: 
+            continue
+            
+        filename = unquote(referenced_image.get('href')[offset:])
+        assert(filename.startswith("File:"))
+        
+        res.append((filename, div.text))
+    return res
             
 #########################################################################################################
 # Public Interface
@@ -279,7 +314,7 @@ def query(filename: str, params: QueryParams) -> None:
 def update_meta_description(filename, out_dir, offset=0, limit=None):
     site = pywikibot.Site()    
     pages = list(pagegenerators.TextfilePageGenerator(filename=filename, site=site))
-    limit = _validated_limit(limit, offset, len(article_paths))
+    limit = _validated_limit(limit, offset, len(pages))
     
     for i in range(offset, offset + limit):
         p = pages[i]
@@ -312,3 +347,97 @@ def update_meta_description(filename, out_dir, offset=0, limit=None):
         if updated:
             meta_json = json.dumps(meta)
             _dump(meta_path, meta_json)
+
+# Time-consuming but exhoustive fetching of image captions. On the other hand,
+# fetch_meta_captions_fast is a fast alternative, although it misses around 20% of labels
+def fetch_meta_captions(filename, out_dir, offset=0, limit=None):
+    site = pywikibot.Site()    
+    pages = list(pagegenerators.TextfilePageGenerator(filename=filename, site=site))
+    limit = _validated_limit(limit, offset, len(pages))
+    
+    options = Options()
+    options.headless = True
+    driver = webdriver.Firefox(options=options)
+    
+    for j in range(offset, offset + limit):
+        p = pages[j]
+        if p.pageid == 0:
+            print("ERROR: Cannot fetch the page " + p.title())
+            continue
+        
+        page_dir = _get_path(out_dir + p.title(as_filename=True).rstrip('.'), create_if_not_exists=False)
+        if not page_dir.exists():
+            print('not page_dir.exists()', page_dir)
+            continue  # onyshchak: temporary switch to enrich only existing data
+            
+        print(j, p.title())
+        img_dir = _get_path(page_dir/"img", create_if_not_exists=False)
+        meta_path = img_dir / 'meta.json'
+        meta_arr = _getJSON(meta_path)['img_meta']
+        
+        page_id = p.title(as_filename=True).rstrip('.')
+        for img in p.imagelinks():
+            if not _valid_img_type(img.title(with_ns=False)):
+                continue
+            
+            img_id = img.title(as_filename=True, with_ns=False)
+            res = [i for i, x in enumerate(meta_arr) if unquote(x['url']).split('/wiki/File:')[-1] == img_id]
+            if len(res) != 1:
+                print('WARNING: outdated page {}, missing image {}'.format(page_id, img_id))
+                continue
+            
+            i = res[0]
+            url = 'https://en.wikipedia.org/wiki/{}#/media/File:{}'.format(page_id, img_id)
+            driver.get(url)
+            time.sleep(1) # reqired for JS to load content
+            caption = None
+            for k in range(5):
+                try:
+                    caption = driver.find_element_by_class_name("mw-mmv-title").text
+                    if caption == "":
+                        caption = None
+                        raise Exception
+                except:
+                    time.sleep(1) # reqired for JS to load content
+                    print("RETRY", k, " ||| ", img_id)
+            
+            meta_arr[i].pop('caption', None)
+            if caption and caption != _remove_prefix(meta_arr[i]['description'], "English: "):
+                meta_arr[i]['caption'] = caption
+#                 print(j, img_id, ' ||| ', caption)
+            
+        _dump(meta_path, json.dumps({"img_meta": meta_arr}))
+            
+    driver.quit()
+
+# TODO: remake to fit common interface
+# Please check documentation for fetch_meta_captions for more details
+def fetch_meta_captions_fast(data_path, offset=0, limit=None):
+    article_paths = [join(data_path, f) for f in listdir(data_path) if isdir(join(data_path, f))]
+    limit = limit if limit else len(article_paths) - offset
+    limit = min(limit, len(article_paths) - offset)
+    
+    for i in range(offset, offset + limit):
+        path = article_paths[i]
+        print(i, path)
+        
+        meta_path = join(path, 'img', 'meta.json')
+        meta_arr = _getJSON(meta_path)['img_meta']
+        
+        text_path = join(path, 'text.json')
+        article_url = _getJSON(text_path)['url']
+        
+        image_captions = _get_image_captions(article_url)
+        for filename, caption in image_captions:
+            if not _valid_img_type(filename): continue
+            
+            res = [i for i, x in enumerate(meta_arr) if unquote(x['url']).split('/wiki/')[-1] == filename]
+            if len(res) != 1:
+                print('WARNING: outdated page {}, missing image {}'.format(path, filename))
+                continue
+            
+            i = res[0]
+            meta_arr[i]['caption'] = caption
+                
+        _dump(meta_path, json.dumps({"img_meta": meta_arr}))
+    
