@@ -7,6 +7,7 @@ In this paper, we propose to research whether state-of-the-art techniques of mul
 Dataset was collected from Wikipedia and uploaded to [Kaggle](https://www.kaggle.com/jacksoncrow/wiki-articles-multimodal). For more details about dataset collection and structure, please refer to its description on Kaggle.
 ## Reproduce Results
 You can reproduce the results either by setting up the environment locally or by cloning notebooks from Kaggle. Following Kaggle notebooks are available:
+* [Dataset Collection](https://www.kaggle.com/jacksoncrow/data-collection-demo)
 * [Dataset Preprocessing](https://www.kaggle.com/jacksoncrow/dataset-preprocessing)
 * [W2VV training](https://www.kaggle.com/jacksoncrow/w2vvtraining)
 * [Text Similarity model](https://www.kaggle.com/jacksoncrow/text-similarity-model)
